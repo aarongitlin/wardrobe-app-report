@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wardrobe App — Prototype Screen Spec</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #1C1916;
+    --bg-alt: #241F1B;
+    --bg-card: #2A2520;
+    --text: #E8DDD0;
+    --text-secondary: #A89A8C;
+    --text-muted: #6B5E50;
+    --accent: #D4956B;
+    --accent-light: #E8B896;
+    --accent-bg: rgba(212,149,107,0.1);
+    --sage: #8FA882;
+    --sage-light: rgba(143,168,130,0.15);
+    --sage-bg: rgba(143,168,130,0.08);
+    --warm: #C4A87A;
+    --warm-light: rgba(196,168,122,0.12);
+    --border: rgba(232,221,208,0.1);
+    --shadow: 0 2px 12px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.3);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .noise-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 1000;
+    opacity: 0.035; mix-blend-mode: overlay;
+  }
+  .glow-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 999;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212,149,107,0.06) 0%, transparent 60%);
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(28,25,22,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+  nav .nav-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--accent);
+    text-decoration: none;
+  }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    padding: 140px 32px 60px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .hero-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    line-height: 1.1; max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    font-size: 17px; color: var(--text-secondary);
+    max-width: 600px; line-height: 1.8;
+  }
+
+  /* Sections */
+  .section {
+    max-width: 1400px; margin: 0 auto;
+    padding: 80px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 300;
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .section-subtitle {
+    font-size: 16px; color: var(--text-secondary);
+    max-width: 640px; margin-bottom: 48px; line-height: 1.8;
+  }
+
+  /* Flow map */
+  .flow-map {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    overflow-x: auto;
+    padding: 20px 0 32px;
+    margin-bottom: 48px;
+  }
+  .flow-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    min-width: 140px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .flow-step.active {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+  .flow-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 400;
+    text-transform: none; letter-spacing: 0;
+    margin-bottom: 2px;
+  }
+  .flow-step p {
+    font-size: 11px; color: var(--text-muted);
+  }
+  .flow-arrow {
+    font-size: 18px; color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  /* Screen showcase */
+  .screen-row {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+  .screen-row.reverse {
+    grid-template-columns: 1fr 320px;
+  }
+  @media (max-width: 900px) {
+    .screen-row, .screen-row.reverse {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .screen-frame {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .screen-frame svg { width: 100%; display: block; }
+
+  .screen-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .screen-info .screen-desc {
+    font-size: 15px; color: var(--text-secondary);
+    line-height: 1.8; margin-bottom: 24px;
+  }
+
+  .interaction-list { list-style: none; }
+  .interaction-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 12px; align-items: start;
+    font-size: 14px; color: var(--text-secondary);
+  }
+  .interaction-list li:last-child { border-bottom: none; }
+  .interaction-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .interaction-icon.tap { background: var(--accent-bg); color: var(--accent); }
+  .interaction-icon.swipe { background: var(--sage-bg); color: var(--sage); }
+  .interaction-icon.auto { background: var(--warm-light); color: var(--warm); }
+  .interaction-icon.drag { background: rgba(139,125,110,0.15); color: #8B7D6E; }
+
+  .interaction-list strong { color: var(--text); }
+
+  /* Annotation callout */
+  .annotation {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .annotation strong { color: var(--accent); }
+
+  /* Screen grid for multi-screen flows */
+  .screen-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .screen-flow-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .screen-flow-card svg { width: 100%; display: block; }
+  .screen-flow-card .flow-label {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .screen-flow-card .flow-label .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--accent-light);
+    margin-right: 8px;
+  }
+  .screen-flow-card .flow-label h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; text-transform: none;
+    letter-spacing: 0; margin-bottom: 4px; font-weight: 400;
+    display: inline;
+  }
+  .screen-flow-card .flow-label p {
+    font-size: 12px; color: var(--text-muted); line-height: 1.6;
+    margin-top: 6px;
+  }
+
+  /* Site map overview */
+  .sitemap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 768px) {
+    .sitemap { grid-template-columns: repeat(2, 1fr); }
+  }
+  .sitemap-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .sitemap-card:hover { border-color: var(--accent); }
+  .sitemap-card .sitemap-icon {
+    font-size: 24px; margin-bottom: 8px;
+  }
+  .sitemap-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 400;
+    text-transform: none; letter-spacing: 0;
+    margin-bottom: 4px;
+  }
+  .sitemap-card p {
+    font-size: 11px; color: var(--text-muted);
+  }
+  .sitemap-card.primary {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  /* Tab bar reference */
+  .tab-bar-ref {
+    display: flex;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+  .tab-bar-ref .tab {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-right: 1px solid var(--border);
+  }
+  .tab-bar-ref .tab:last-child { border-right: none; }
+  .tab-bar-ref .tab.active {
+    color: var(--accent);
+    background: var(--accent-bg);
+  }
+  .tab-bar-ref .tab .tab-icon { font-size: 18px; margin-bottom: 4px; }
+  .tab-bar-ref .tab .tab-label { font-size: 11px; font-weight: 600; }
+
+  /* Two col text */
+  .two-col-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 768px) {
+    .two-col-text { grid-template-columns: 1fr; }
+  }
+  .two-col-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; margin-bottom: 12px;
+  }
+  .two-col-text p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 32px;
+    text-align: center;
+    font-size: 13px; color: var(--text-muted);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<svg class="noise-overlay" width="100%" height="100%">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+<div class="glow-overlay"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Closet Intelligence</a>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#onboarding">Onboarding</a></li>
+      <li><a href="#closet">Closet</a></li>
+      <li><a href="#detection">Detection</a></li>
+      <li><a href="#outfits">Outfits</a></li>
+      <li><a href="#activity">Activity</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">Prototype Screen Spec — Interactive Experience</div>
+  <h1>Screens & <em>Flows</em></h1>
+  <p>A detailed walkthrough of every key screen and interaction in the prototype. This is the blueprint for the interactive experience — what users will see, tap, and feel before any backend is wired up.</p>
+</div>
+
+<!-- ==================== OVERVIEW ==================== -->
+<div class="section" id="overview">
+  <div class="section-label">01 — App Architecture</div>
+  <div class="section-title">Screen Map</div>
+  <div class="section-subtitle">The prototype covers four primary tabs and two key sub-flows. Every screen uses the Warm Studio design system with dummy data pre-loaded.</div>
+
+  <div class="sitemap">
+    <div class="sitemap-card primary">
+      <div class="sitemap-icon">👗</div>
+      <h4>Closet Home</h4>
+      <p>Main tab · Grid view · Filters</p>
+    </div>
+    <div class="sitemap-card">
+      <div class="sitemap-icon">✨</div>
+      <h4>Outfits</h4>
+      <p>Saved outfits · Builder</p>
+    </div>
+    <div class="sitemap-card">
+      <div class="sitemap-icon">📋</div>
+      <h4>Activity</h4>
+      <p>Auto-add log · History</p>
+    </div>
+    <div class="sitemap-card">
+      <div class="sitemap-icon">👤</div>
+      <h4>Profile</h4>
+      <p>Settings · Email connection</p>
+    </div>
+  </div>
+
+  <div class="sitemap" style="grid-template-columns: repeat(3, 1fr); max-width: 700px;">
+    <div class="sitemap-card">
+      <div class="sitemap-icon">📧</div>
+      <h4>Onboarding</h4>
+      <p>Email connect flow</p>
+    </div>
+    <div class="sitemap-card">
+      <div class="sitemap-icon">🔔</div>
+      <h4>Auto-Detection</h4>
+      <p>New item confirmation</p>
+    </div>
+    <div class="sitemap-card">
+      <div class="sitemap-icon">📄</div>
+      <h4>Item Detail</h4>
+      <p>Full item view + stats</p>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Navigation model:</strong> Standard bottom tab bar with 4 tabs. Sub-flows (onboarding, item detail, outfit builder) push on top as modal or drill-down screens. The prototype uses simulated navigation — tapping tabs and items transitions between pre-built views with smooth animations.
+  </div>
+
+  <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin: 40px 0 16px;">Tab Bar</h3>
+  <div class="tab-bar-ref">
+    <div class="tab active">
+      <div class="tab-icon">👗</div>
+      <div class="tab-label">Closet</div>
+    </div>
+    <div class="tab">
+      <div class="tab-icon">✨</div>
+      <div class="tab-label">Outfits</div>
+    </div>
+    <div class="tab">
+      <div class="tab-icon">📋</div>
+      <div class="tab-label">Activity</div>
+    </div>
+    <div class="tab">
+      <div class="tab-icon">👤</div>
+      <div class="tab-label">Profile</div>
+    </div>
+  </div>
+
+  <div class="two-col-text">
+    <div>
+      <h3>Prototype Scope</h3>
+      <p>The prototype simulates the full first-week experience: onboarding, seeing your closet populate automatically, browsing items, building an outfit, and checking your activity feed. All data is fake but realistic — 30+ clothing items across categories, pre-built outfits, and a simulated activity history showing auto-added items over time.</p>
+    </div>
+    <div>
+      <h3>What's Real vs. Simulated</h3>
+      <p><strong style="color: var(--sage);">Real:</strong> All UI interactions (taps, filters, drag-and-drop), navigation between screens, visual design, layout, and information architecture.<br><br><strong style="color: var(--accent);">Simulated:</strong> Email connection (fake OAuth), email scanning (animated progress), item data (pre-loaded dummy items), background removal (pre-cut images).</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ONBOARDING FLOW ==================== -->
+<div class="section" id="onboarding">
+  <div class="section-label">02 — Onboarding Flow</div>
+  <div class="section-title">First Launch Experience</div>
+  <div class="section-subtitle">The most critical flow in the app. Four screens that take a new user from download to a populated closet in under 2 minutes (simulated). This is the "magic moment."</div>
+
+  <div class="flow-map">
+    <div class="flow-step active"><h4>Welcome</h4><p>Value prop</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>Connect Email</h4><p>Gmail / Outlook</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>Scanning</h4><p>Animated progress</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>Closet Ready</h4><p>Items populated</p></div>
+  </div>
+
+  <div class="screen-flow-grid">
+    <!-- Step 1: Welcome -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <rect x="88" y="120" width="200" height="200" rx="100" fill="#3D3328"/>
+        <rect x="128" y="170" width="120" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <path d="M128 182 L188 220 L248 182" stroke="#D4956B" stroke-width="2" fill="none"/>
+        <circle cx="118" cy="160" r="4" fill="#D4956B" opacity="0.4"/>
+        <circle cx="268" cy="180" r="3" fill="#8FA882" opacity="0.5"/>
+        <circle cx="250" cy="150" r="5" fill="#C4A87A" opacity="0.3"/>
+        <text x="187" y="370" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0" text-anchor="middle">Your closet,</text>
+        <text x="187" y="405" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0" text-anchor="middle">on autopilot</text>
+        <text x="187" y="440" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">Connect your email and we'll</text>
+        <text x="187" y="460" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">automatically build your wardrobe.</text>
+        <rect x="40" y="510" width="295" height="52" rx="26" fill="#E8DDD0"/>
+        <text x="187" y="541" font-family="DM Sans" font-size="15" font-weight="600" fill="#1C1916" text-anchor="middle">Connect Gmail</text>
+        <rect x="40" y="574" width="295" height="52" rx="26" fill="#2A2520" stroke="#3D3630"/>
+        <text x="187" y="605" font-family="DM Sans" font-size="15" font-weight="500" fill="#E8DDD0" text-anchor="middle">Connect Outlook</text>
+        <text x="187" y="652" font-family="DM Sans" font-size="13" fill="#6B5E50" text-anchor="middle">Skip for now</text>
+      </svg>
+      <div class="flow-label">
+        <span class="step-num">1</span><h4>Welcome</h4>
+        <p>Single focused screen. Two CTAs for email providers, one skip link (de-emphasized). The envelope illustration pulses gently.</p>
+      </div>
+    </div>
+
+    <!-- Step 2: Fake OAuth -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <!-- Simulated Google OAuth sheet -->
+        <rect x="0" y="200" width="375" height="480" rx="20" fill="#FFFFFF"/>
+        <text x="187" y="240" font-family="DM Sans" font-size="11" fill="#5F6368" text-anchor="middle">accounts.google.com</text>
+        <!-- Google logo area -->
+        <rect x="155" y="260" width="65" height="22" rx="4" fill="#E8EAED"/>
+        <text x="187" y="276" font-family="DM Sans" font-size="12" font-weight="600" fill="#5F6368" text-anchor="middle">Google</text>
+        <text x="187" y="316" font-family="DM Sans" font-size="18" fill="#202124" text-anchor="middle">Sign in</text>
+        <text x="187" y="340" font-family="DM Sans" font-size="13" fill="#5F6368" text-anchor="middle">to continue to Closet Intelligence</text>
+        <!-- Email input -->
+        <rect x="48" y="370" width="280" height="48" rx="8" fill="none" stroke="#DADCE0"/>
+        <text x="68" y="399" font-family="DM Sans" font-size="14" fill="#202124">sarah@gmail.com</text>
+        <!-- Next button -->
+        <rect x="220" y="450" width="108" height="40" rx="20" fill="#1A73E8"/>
+        <text x="274" y="475" font-family="DM Sans" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Next</text>
+        <!-- Permission text -->
+        <text x="187" y="530" font-family="DM Sans" font-size="12" fill="#5F6368" text-anchor="middle">Closet Intelligence wants to:</text>
+        <text x="187" y="554" font-family="DM Sans" font-size="12" fill="#5F6368" text-anchor="middle">• Read your email messages (read-only)</text>
+        <!-- Privacy note -->
+        <rect x="48" y="590" width="280" height="48" rx="8" fill="#F8F9FA"/>
+        <text x="187" y="612" font-family="DM Sans" font-size="11" fill="#5F6368" text-anchor="middle">🔒 Only order confirmations are scanned.</text>
+        <text x="187" y="628" font-family="DM Sans" font-size="11" fill="#5F6368" text-anchor="middle">No personal emails are read or stored.</text>
+      </svg>
+      <div class="flow-label">
+        <span class="step-num">2</span><h4>Email Connect</h4>
+        <p>Simulated OAuth modal slides up. In the prototype, tapping "Next" triggers a brief loading animation, then transitions to the scanning screen. No real auth happens.</p>
+      </div>
+    </div>
+
+    <!-- Step 3: Scanning -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <!-- Scanning animation area -->
+        <rect x="88" y="140" width="200" height="200" rx="100" fill="#3D3328"/>
+        <!-- Animated rings (static representation) -->
+        <circle cx="188" cy="240" r="60" fill="none" stroke="#D4956B" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="188" cy="240" r="45" fill="none" stroke="#D4956B" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="188" cy="240" r="30" fill="none" stroke="#D4956B" stroke-width="2" opacity="0.8"/>
+        <!-- Email icon center -->
+        <rect x="168" y="225" width="40" height="30" rx="4" fill="#D4956B"/>
+        <path d="M168 229 L188 245 L208 229" stroke="#1C1916" stroke-width="2" fill="none"/>
+        <!-- Status text -->
+        <text x="187" y="390" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0" text-anchor="middle">Scanning your inbox…</text>
+        <text x="187" y="420" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">Looking for clothing purchases</text>
+        <!-- Progress bar -->
+        <rect x="60" y="460" width="255" height="6" rx="3" fill="#332E29"/>
+        <rect x="60" y="460" width="170" height="6" rx="3" fill="#D4956B"/>
+        <!-- Found items counter -->
+        <text x="187" y="500" font-family="DM Sans" font-size="32" font-weight="300" fill="#E8DDD0" text-anchor="middle">23</text>
+        <text x="187" y="522" font-family="DM Sans" font-size="13" fill="#6B5E50" text-anchor="middle">items found so far</text>
+        <!-- Item thumbnails appearing -->
+        <rect x="68" y="560" width="50" height="50" rx="10" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="78" y="568" width="30" height="34" rx="4" fill="#4A6B8A"/>
+        <rect x="128" y="560" width="50" height="50" rx="10" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="138" y="568" width="30" height="34" rx="4" fill="#8B7B6B"/>
+        <rect x="188" y="560" width="50" height="50" rx="10" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="198" y="568" width="30" height="34" rx="4" fill="#5E5548"/>
+        <rect x="248" y="560" width="50" height="50" rx="10" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="258" y="568" width="30" height="34" rx="4" fill="#3A3A3A"/>
+        <!-- Bottom text -->
+        <text x="187" y="640" font-family="DM Sans" font-size="12" fill="#6B5E50" text-anchor="middle">This usually takes about a minute</text>
+        <text x="187" y="660" font-family="DM Sans" font-size="12" fill="#D4956B" text-anchor="middle">You can close the app — we'll notify you</text>
+      </svg>
+      <div class="flow-label">
+        <span class="step-num">3</span><h4>Scanning Progress</h4>
+        <p>Animated progress with a live counter. Item thumbnails appear one-by-one as "found." In the prototype, this runs for ~8 seconds with a scripted sequence, then auto-transitions.</p>
+      </div>
+    </div>
+
+    <!-- Step 4: Ready -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <!-- Success animation area -->
+        <rect x="138" y="120" width="100" height="100" rx="50" fill="#2D3329"/>
+        <text x="188" y="182" font-family="DM Sans" font-size="40" fill="#8FA882" text-anchor="middle">✓</text>
+        <!-- Title -->
+        <text x="187" y="270" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0" text-anchor="middle">Your closet is ready</text>
+        <text x="187" y="300" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">We found 31 items across your recent purchases</text>
+        <!-- Stats row -->
+        <rect x="30" y="340" width="100" height="72" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <text x="80" y="370" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0" text-anchor="middle">12</text>
+        <text x="80" y="390" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Tops</text>
+        <rect x="138" y="340" width="100" height="72" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <text x="188" y="370" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0" text-anchor="middle">8</text>
+        <text x="188" y="390" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Bottoms</text>
+        <rect x="246" y="340" width="100" height="72" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <text x="296" y="370" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0" text-anchor="middle">6</text>
+        <text x="296" y="390" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Shoes</text>
+        <!-- Mini preview grid -->
+        <rect x="30" y="440" width="75" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="42" y="450" width="51" height="65" rx="4" fill="#4A6B8A"/>
+        <rect x="113" y="440" width="75" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="125" y="450" width="51" height="65" rx="4" fill="#8B7B6B"/>
+        <rect x="196" y="440" width="75" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="208" y="450" width="51" height="65" rx="4" fill="#5E5548"/>
+        <rect x="279" y="440" width="75" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="291" y="450" width="51" height="65" rx="4" fill="#3A3A3A"/>
+        <!-- More indicator -->
+        <text x="187" y="560" font-family="DM Sans" font-size="13" fill="#6B5E50" text-anchor="middle">+ 27 more items</text>
+        <!-- CTA -->
+        <rect x="40" y="600" width="295" height="52" rx="26" fill="#E8DDD0"/>
+        <text x="187" y="631" font-family="DM Sans" font-size="15" font-weight="600" fill="#1C1916" text-anchor="middle">Explore Your Closet</text>
+        <text x="187" y="668" font-family="DM Sans" font-size="12" fill="#6B5E50" text-anchor="middle">We'll keep scanning for new purchases</text>
+      </svg>
+      <div class="flow-label">
+        <span class="step-num">4</span><h4>Closet Ready</h4>
+        <p>Success state with item count by category and a preview grid. Tapping "Explore Your Closet" transitions to the main Closet Home with all items loaded. The checkmark animates in with a satisfying bounce.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Key design decision:</strong> The onboarding flow is intentionally linear and focused. There's no account creation screen — email connection IS the onboarding. The skip path leads directly to an empty closet with a persistent "Connect email" prompt. We want to test whether users feel comfortable connecting email or whether the skip rate is too high.
+  </div>
+</div>
+
+<!-- ==================== CLOSET HOME ==================== -->
+<div class="section" id="closet">
+  <div class="section-label">03 — Closet Home</div>
+  <div class="section-title">The Main Event</div>
+  <div class="section-subtitle">The screen users see most. A clean grid of all clothing items with fast filtering by category. Designed to feel like a well-organized physical closet — visual, browsable, and low-effort.</div>
+
+  <div class="screen-row">
+    <div class="screen-frame">
+      <svg viewBox="0 0 375 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="780" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="335" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">⚡</text>
+        <!-- Header -->
+        <text x="20" y="100" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0">My Closet</text>
+        <text x="20" y="122" font-family="DM Sans" font-size="13" fill="#6B5E50">31 items · 3 added this week</text>
+        <!-- Search icon -->
+        <rect x="310" y="82" width="40" height="40" rx="20" fill="#2A2520" stroke="#3D3630"/>
+        <text x="330" y="108" font-family="DM Sans" font-size="16" fill="#8B7D6E" text-anchor="middle">🔍</text>
+        <!-- New items badge -->
+        <rect x="20" y="140" width="335" height="44" rx="12" fill="#2D3329" stroke="rgba(143,168,130,0.2)"/>
+        <text x="40" y="167" font-family="DM Sans" font-size="13" fill="#8FA882">✓ 3 new items auto-added this week</text>
+        <text x="320" y="167" font-family="DM Sans" font-size="12" font-weight="500" fill="#8FA882">View</text>
+        <!-- Filter pills -->
+        <rect x="20" y="200" width="50" height="32" rx="16" fill="#E8DDD0"/>
+        <text x="45" y="220" font-family="DM Sans" font-size="11" font-weight="600" fill="#1C1916" text-anchor="middle">All</text>
+        <rect x="78" y="200" width="60" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="108" y="220" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E" text-anchor="middle">Tops</text>
+        <rect x="146" y="200" width="72" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="182" y="220" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E" text-anchor="middle">Bottoms</text>
+        <rect x="226" y="200" width="62" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="257" y="220" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E" text-anchor="middle">Shoes</text>
+        <rect x="296" y="200" width="60" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="326" y="220" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E" text-anchor="middle">Outer</text>
+        <!-- Grid row 1 -->
+        <rect x="20" y="250" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="260" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="52" y="270" width="43" height="72" rx="4" fill="#4A6B8A"/>
+        <text x="32" y="372" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Oxford Shirt</text>
+        <text x="32" y="385" font-family="DM Sans" font-size="9" fill="#6B5E50">J.Crew · $68</text>
+        <rect x="134" y="250" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="260" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="166" y="268" width="43" height="76" rx="4" fill="#5A5046"/>
+        <text x="146" y="372" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Merino Sweater</text>
+        <text x="146" y="385" font-family="DM Sans" font-size="9" fill="#6B5E50">Everlane · $85</text>
+        <rect x="248" y="250" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="260" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="278" y="272" width="47" height="70" rx="4" fill="#6B5E4E"/>
+        <text x="260" y="372" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Chinos</text>
+        <text x="260" y="385" font-family="DM Sans" font-size="9" fill="#6B5E50">Bonobos · $98</text>
+        <!-- New item indicator on first item -->
+        <circle cx="120" cy="258" r="5" fill="#8FA882"/>
+        <!-- Grid row 2 -->
+        <rect x="20" y="404" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="414" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="52" y="422" width="43" height="76" rx="4" fill="#6B6054"/>
+        <text x="32" y="526" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Denim Jacket</text>
+        <text x="32" y="539" font-family="DM Sans" font-size="9" fill="#6B5E50">Levi's · $128</text>
+        <rect x="134" y="404" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="414" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="162" y="434" width="51" height="54" rx="4" fill="#5E5548"/>
+        <text x="146" y="526" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Stan Smiths</text>
+        <text x="146" y="539" font-family="DM Sans" font-size="9" fill="#6B5E50">Adidas · $95</text>
+        <rect x="248" y="404" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="414" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="278" y="426" width="47" height="70" rx="4" fill="#645A4C"/>
+        <text x="260" y="526" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Grey Hoodie</text>
+        <text x="260" y="539" font-family="DM Sans" font-size="9" fill="#6B5E50">Reigning Champ</text>
+        <!-- Grid row 3 -->
+        <rect x="20" y="558" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="568" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="50" y="578" width="47" height="72" rx="4" fill="#3A3A3A"/>
+        <text x="32" y="680" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Chelsea Boots</text>
+        <text x="32" y="693" font-family="DM Sans" font-size="9" fill="#6B5E50">Thursday · $199</text>
+        <rect x="134" y="558" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="568" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="164" y="576" width="47" height="76" rx="4" fill="#6B8F72"/>
+        <text x="146" y="680" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Utility Jacket</text>
+        <text x="146" y="693" font-family="DM Sans" font-size="9" fill="#6B5E50">Taylor Stitch</text>
+        <rect x="248" y="558" width="107" height="140" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="568" width="83" height="94" rx="8" fill="#332E29"/>
+        <rect x="276" y="580" width="51" height="68" rx="4" fill="#7A6E5E"/>
+        <text x="260" y="680" font-family="DM Sans" font-size="10" font-weight="500" fill="#E8DDD0">Linen Shirt</text>
+        <text x="260" y="693" font-family="DM Sans" font-size="9" fill="#6B5E50">Uniqlo · $40</text>
+        <!-- Bottom tab bar -->
+        <rect x="0" y="730" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="760" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Closet</text>
+        <text x="137" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Outfits</text>
+        <text x="237" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="50" cy="744" r="2.5" fill="#D4956B"/>
+      </svg>
+    </div>
+    <div class="screen-info">
+      <h3>Closet Home</h3>
+      <p class="screen-desc">The primary screen. A scrollable 3-column grid of all items with category filter pills. Each item card shows a clean cutout image, name, brand, and price. New auto-added items get a green dot indicator.</p>
+
+      <ul class="interaction-list">
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Filter pills</strong> — toggle between All, Tops, Bottoms, Shoes, Outerwear. Grid animates with a subtle layout shift. Active pill fills solid.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Item card</strong> — opens Item Detail view (drill-down). Card scales down slightly on press for tactile feedback.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Green banner "View"</strong> — jumps to Activity feed filtered to this week's auto-added items.</div>
+        </li>
+        <li>
+          <div class="interaction-icon swipe">↕</div>
+          <div><strong>Scroll</strong> — grid scrolls vertically. Filter pills remain sticky at top. Header collapses to compact state on scroll.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">🔍</div>
+          <div><strong>Search</strong> — opens full-screen search with text input. Filters items by name, brand, color, or category as you type.</div>
+        </li>
+      </ul>
+
+      <div class="annotation">
+        <strong>Prototype note:</strong> The grid will contain ~30 pre-loaded dummy items with realistic names, brands, and prices. Item images will be solid color rectangles with simple clothing silhouettes (similar to wireframe style). Filtering works for real — tapping "Tops" hides non-top items with an animation.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== AUTO-DETECTION ==================== -->
+<div class="section" id="detection">
+  <div class="section-label">04 — Auto-Detection</div>
+  <div class="section-title">The Magic Moment</div>
+  <div class="section-subtitle">When the app finds a new purchase in your email and presents it for confirmation. This is the "wow" interaction — the thing that makes this product different from everything else.</div>
+
+  <div class="screen-row reverse">
+    <div class="screen-info">
+      <h3>New Item Detected</h3>
+      <p class="screen-desc">This screen appears either from a push notification or when the user taps a new item in the Activity feed. It shows the extracted item image with background removed, alongside auto-detected metadata. The user can confirm with one tap or edit any field.</p>
+
+      <ul class="interaction-list">
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>"Add to Closet"</strong> — confirms the item with current tags. Item appears in the closet grid with a brief celebratory animation (subtle confetti or glow).</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>"Edit tags"</strong> — fields become editable inline. Category becomes a dropdown, color shows a palette picker, brand and price are text fields.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Category/Color/Brand fields</strong> — tap any field to quick-edit it directly. Most users will confirm without editing.</div>
+        </li>
+        <li>
+          <div class="interaction-icon swipe">←</div>
+          <div><strong>Swipe to dismiss</strong> — dismisses the item (doesn't add to closet). "Are you sure?" confirmation appears.</div>
+        </li>
+      </ul>
+
+      <div class="annotation">
+        <strong>In the prototype:</strong> This screen is triggered by tapping a "Simulate new item" button in the Profile tab (for demo purposes). It runs a brief animation of "detecting" a new item, then reveals the confirmation screen. The item data is pre-defined but presented as if just discovered.
+      </div>
+    </div>
+    <div class="screen-frame">
+      <svg viewBox="0 0 375 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="740" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="187" y="100" font-family="DM Sans" font-size="14" font-weight="600" fill="#E8DDD0" text-anchor="middle">New Item Detected</text>
+        <!-- Source banner -->
+        <rect x="20" y="120" width="335" height="48" rx="12" fill="#2D3329"/>
+        <text x="40" y="149" font-family="DM Sans" font-size="13" fill="#8FA882">✓ Found in your Thursday Boots confirmation</text>
+        <!-- Item image -->
+        <rect x="88" y="186" width="200" height="260" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="118" y="200" width="140" height="230" rx="8" fill="#332E29"/>
+        <!-- Boot shape -->
+        <rect x="148" y="260" width="80" height="120" rx="8" fill="#3A3A3A"/>
+        <rect x="138" y="340" width="100" height="40" rx="6" fill="#4A4238"/>
+        <rect x="148" y="250" width="80" height="30" rx="4" fill="#4A4238"/>
+        <!-- Auto-detected info card -->
+        <rect x="20" y="466" width="335" height="200" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <text x="40" y="496" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">AUTO-DETECTED</text>
+        <!-- Fields -->
+        <text x="40" y="528" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Category</text>
+        <rect x="200" y="514" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="532" font-family="DM Sans" font-size="12" fill="#8B7D6E">Boots</text>
+        <text x="40" y="564" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Color</text>
+        <rect x="200" y="550" width="140" height="28" rx="8" fill="#332E29"/>
+        <circle cx="216" cy="564" r="6" fill="#3A3A3A"/>
+        <text x="230" y="568" font-family="DM Sans" font-size="12" fill="#8B7D6E">Brown</text>
+        <text x="40" y="600" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Brand</text>
+        <rect x="200" y="586" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="604" font-family="DM Sans" font-size="12" fill="#8B7D6E">Thursday Boots</text>
+        <text x="40" y="636" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Price</text>
+        <rect x="200" y="622" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="640" font-family="DM Sans" font-size="12" fill="#8B7D6E">$199.00</text>
+        <!-- Buttons -->
+        <rect x="20" y="682" width="230" height="48" rx="24" fill="#E8DDD0"/>
+        <text x="135" y="710" font-family="DM Sans" font-size="14" font-weight="600" fill="#1C1916" text-anchor="middle">Add to Closet</text>
+        <text x="300" y="710" font-family="DM Sans" font-size="13" font-weight="500" fill="#D4956B">Edit tags</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== OUTFIT BUILDER ==================== -->
+<div class="section" id="outfits">
+  <div class="section-label">05 — Outfit Builder</div>
+  <div class="section-title">Build & Browse Outfits</div>
+  <div class="section-subtitle">Two sub-screens: the saved outfits gallery and the drag-and-drop outfit builder. The builder is the most interaction-heavy screen in the app.</div>
+
+  <div class="screen-flow-grid" style="grid-template-columns: 1fr 1fr;">
+    <!-- Saved Outfits -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0">Outfits</text>
+        <text x="20" y="122" font-family="DM Sans" font-size="13" fill="#6B5E50">4 saved outfits</text>
+        <!-- New outfit button -->
+        <rect x="264" y="82" width="90" height="36" rx="18" fill="#D4956B"/>
+        <text x="309" y="104" font-family="DM Sans" font-size="12" font-weight="600" fill="#1C1916" text-anchor="middle">+ New</text>
+        <!-- Outfit cards - 2 col grid -->
+        <rect x="20" y="148" width="165" height="220" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <!-- Outfit collage mini -->
+        <rect x="40" y="162" width="55" height="45" rx="4" fill="#4A6B8A" opacity="0.9"/>
+        <rect x="100" y="162" width="55" height="45" rx="4" fill="#8B7B6B" opacity="0.9"/>
+        <rect x="60" y="214" width="65" height="75" rx="4" fill="#5A5046" opacity="0.9"/>
+        <rect x="55" y="296" width="50" height="30" rx="4" fill="#3A3A3A" opacity="0.9"/>
+        <text x="36" y="348" font-family="DM Sans" font-size="12" font-weight="500" fill="#E8DDD0">Client Dinner</text>
+        <text x="36" y="362" font-family="DM Sans" font-size="10" fill="#6B5E50">3 items · Created Feb 12</text>
+
+        <rect x="193" y="148" width="165" height="220" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="213" y="162" width="55" height="45" rx="4" fill="#6B6054" opacity="0.9"/>
+        <rect x="273" y="162" width="55" height="45" rx="4" fill="#5E5548" opacity="0.9"/>
+        <rect x="233" y="214" width="65" height="75" rx="4" fill="#6B5E4E" opacity="0.9"/>
+        <rect x="228" y="296" width="50" height="30" rx="4" fill="#5E5548" opacity="0.9"/>
+        <text x="209" y="348" font-family="DM Sans" font-size="12" font-weight="500" fill="#E8DDD0">Casual Friday</text>
+        <text x="209" y="362" font-family="DM Sans" font-size="10" fill="#6B5E50">4 items · Created Feb 8</text>
+
+        <rect x="20" y="382" width="165" height="220" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="40" y="396" width="55" height="45" rx="4" fill="#6B8F72" opacity="0.9"/>
+        <rect x="100" y="396" width="55" height="45" rx="4" fill="#4A4238" opacity="0.9"/>
+        <rect x="60" y="448" width="65" height="75" rx="4" fill="#8B7B6B" opacity="0.9"/>
+        <rect x="55" y="530" width="50" height="30" rx="4" fill="#5E5548" opacity="0.9"/>
+        <text x="36" y="582" font-family="DM Sans" font-size="12" font-weight="500" fill="#E8DDD0">Weekend Walk</text>
+        <text x="36" y="596" font-family="DM Sans" font-size="10" fill="#6B5E50">3 items · Created Feb 5</text>
+
+        <rect x="193" y="382" width="165" height="220" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="213" y="396" width="55" height="45" rx="4" fill="#4A6B8A" opacity="0.9"/>
+        <rect x="273" y="396" width="55" height="45" rx="4" fill="#645A4C" opacity="0.9"/>
+        <rect x="233" y="448" width="65" height="75" rx="4" fill="#7A6E5E" opacity="0.9"/>
+        <rect x="228" y="530" width="50" height="30" rx="4" fill="#3A3A3A" opacity="0.9"/>
+        <text x="209" y="582" font-family="DM Sans" font-size="12" font-weight="500" fill="#E8DDD0">Date Night</text>
+        <text x="209" y="596" font-family="DM Sans" font-size="10" fill="#6B5E50">4 items · Created Jan 28</text>
+
+        <!-- Tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="137" cy="644" r="2.5" fill="#D4956B"/>
+      </svg>
+      <div class="flow-label">
+        <h4>Saved Outfits Gallery</h4>
+        <p>2-column grid of saved outfit collages. Each card shows a mini-preview of the outfit with name and item count. Tapping opens the outfit in the builder for editing. The "+ New" button opens a fresh canvas.</p>
+      </div>
+    </div>
+
+    <!-- Builder -->
+    <div class="screen-flow-card">
+      <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="160" y="100" font-family="DM Sans" font-size="14" font-weight="600" fill="#E8DDD0" text-anchor="middle">Build Outfit</text>
+        <text x="340" y="100" font-family="DM Sans" font-size="13" font-weight="500" fill="#D4956B">Save</text>
+        <!-- Canvas -->
+        <rect x="20" y="120" width="335" height="340" rx="16" fill="#2A2520" stroke="#3D3630" stroke-dasharray="4 4"/>
+        <text x="187" y="145" font-family="DM Sans" font-size="11" fill="#6B5E50" text-anchor="middle">Drag items onto canvas</text>
+        <!-- Placed items -->
+        <rect x="130" y="160" width="100" height="80" rx="4" fill="#4A6B8A" opacity="0.9"/>
+        <!-- Selection handles on active item -->
+        <rect x="126" y="156" width="108" height="88" rx="6" fill="none" stroke="#D4956B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <circle cx="126" cy="156" r="4" fill="#D4956B"/>
+        <circle cx="234" cy="156" r="4" fill="#D4956B"/>
+        <circle cx="126" cy="244" r="4" fill="#D4956B"/>
+        <circle cx="234" cy="244" r="4" fill="#D4956B"/>
+        <rect x="125" y="260" width="110" height="120" rx="4" fill="#8B7B6B" opacity="0.9"/>
+        <rect x="145" y="395" width="75" height="45" rx="4" fill="#3A3A3A" opacity="0.9"/>
+        <!-- Item tray -->
+        <rect x="0" y="475" width="375" height="155" fill="#2A2520" stroke="#3D3630"/>
+        <text x="20" y="500" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">YOUR ITEMS</text>
+        <!-- Category tabs -->
+        <rect x="20" y="510" width="42" height="24" rx="12" fill="#E8DDD0"/>
+        <text x="41" y="526" font-family="DM Sans" font-size="10" fill="#1C1916" text-anchor="middle">Tops</text>
+        <rect x="68" y="510" width="60" height="24" rx="12" fill="#332E29"/>
+        <text x="98" y="526" font-family="DM Sans" font-size="10" fill="#8B7D6E" text-anchor="middle">Bottoms</text>
+        <rect x="134" y="510" width="52" height="24" rx="12" fill="#332E29"/>
+        <text x="160" y="526" font-family="DM Sans" font-size="10" fill="#8B7D6E" text-anchor="middle">Shoes</text>
+        <rect x="192" y="510" width="52" height="24" rx="12" fill="#332E29"/>
+        <text x="218" y="526" font-family="DM Sans" font-size="10" fill="#8B7D6E" text-anchor="middle">Outer</text>
+        <!-- Item row -->
+        <rect x="20" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="34" y="550" width="42" height="58" rx="4" fill="#4A4238"/>
+        <rect x="98" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="112" y="550" width="42" height="58" rx="4" fill="#5A5046"/>
+        <rect x="176" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="190" y="550" width="42" height="58" rx="4" fill="#645A4C"/>
+        <rect x="254" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="268" y="550" width="42" height="58" rx="4" fill="#6B6054"/>
+        <rect x="332" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <!-- Tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="137" cy="644" r="2.5" fill="#D4956B"/>
+      </svg>
+      <div class="flow-label">
+        <h4>Outfit Builder</h4>
+        <p>Drag items from the bottom tray onto the canvas. Resize with corner handles. Items snap to a loose grid for alignment. The active item shows selection handles (dashed accent border). Category tabs filter the item tray.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col-text">
+    <div>
+      <h3>Builder Interactions</h3>
+      <p><strong style="color: var(--text);">Drag to add:</strong> Long-press an item in the tray, drag it up onto the canvas. It snaps into place with a subtle shadow lift.<br><br>
+      <strong style="color: var(--text);">Resize:</strong> Tap an item on the canvas to select it (shows handles). Drag corners to resize proportionally.<br><br>
+      <strong style="color: var(--text);">Reposition:</strong> Drag a selected item to move it around the canvas.<br><br>
+      <strong style="color: var(--text);">Remove:</strong> Drag an item below the canvas or tap the X that appears when selected.</p>
+    </div>
+    <div>
+      <h3>Save Flow</h3>
+      <p>Tapping "Save" opens a sheet asking for an outfit name (text input with auto-suggested names like "Monday Look" or "Casual Weekend"). Optional: add a date to schedule it. The saved outfit appears in the gallery.<br><br>
+      <strong style="color: var(--text);">Prototype note:</strong> Drag-and-drop will be fully functional in the prototype. We'll use a simple physics model for smooth dragging. Pre-loaded items will use the same simplified clothing silhouettes from the closet grid.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ACTIVITY ==================== -->
+<div class="section" id="activity">
+  <div class="section-label">06 — Activity Feed</div>
+  <div class="section-title">Your Wardrobe Timeline</div>
+  <div class="section-subtitle">A chronological log of everything that's been added to the closet. The key emotional payoff: watching your wardrobe build itself over time without any effort.</div>
+
+  <div class="screen-row">
+    <div class="screen-frame">
+      <svg viewBox="0 0 375 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="780" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0">Activity</text>
+        <text x="20" y="122" font-family="DM Sans" font-size="13" fill="#6B5E50">Your wardrobe is growing automatically</text>
+        <!-- Summary stats bar -->
+        <rect x="20" y="140" width="335" height="60" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <text x="80" y="168" font-family="Cormorant Garamond, serif" font-size="20" fill="#D4956B" text-anchor="middle">28</text>
+        <text x="80" y="184" font-family="DM Sans" font-size="9" fill="#6B5E50" text-anchor="middle">Auto-added</text>
+        <line x1="140" y1="152" x2="140" y2="188" stroke="#3D3630"/>
+        <text x="200" y="168" font-family="Cormorant Garamond, serif" font-size="20" fill="#E8DDD0" text-anchor="middle">3</text>
+        <text x="200" y="184" font-family="DM Sans" font-size="9" fill="#6B5E50" text-anchor="middle">Manual</text>
+        <line x1="260" y1="152" x2="260" y2="188" stroke="#3D3630"/>
+        <text x="316" y="168" font-family="Cormorant Garamond, serif" font-size="20" fill="#8FA882" text-anchor="middle">$2,847</text>
+        <text x="316" y="184" font-family="DM Sans" font-size="9" fill="#6B5E50" text-anchor="middle">Total Value</text>
+        <!-- This week -->
+        <text x="20" y="232" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">THIS WEEK</text>
+        <!-- Items -->
+        <rect x="20" y="248" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="260" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="46" y="266" width="28" height="36" rx="4" fill="#4A6B8A"/>
+        <text x="96" y="280" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Slim Fit Oxford Shirt</text>
+        <text x="96" y="298" font-family="DM Sans" font-size="12" fill="#6B5E50">J.Crew · $68 · Auto-added</text>
+        <circle cx="338" cy="284" r="4" fill="#8FA882"/>
+
+        <rect x="20" y="330" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="342" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="48" y="350" width="24" height="32" rx="4" fill="#3A3A3A"/>
+        <text x="96" y="362" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Chelsea Boots</text>
+        <text x="96" y="380" font-family="DM Sans" font-size="12" fill="#6B5E50">Thursday Boots · $199 · Auto-added</text>
+        <circle cx="338" cy="366" r="4" fill="#8FA882"/>
+
+        <rect x="20" y="412" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="424" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="44" y="430" width="32" height="36" rx="4" fill="#8B7B6B"/>
+        <text x="96" y="444" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Stretch Chinos</text>
+        <text x="96" y="462" font-family="DM Sans" font-size="12" fill="#6B5E50">Bonobos · $98 · Auto-added</text>
+        <circle cx="338" cy="448" r="4" fill="#8FA882"/>
+
+        <!-- Last month -->
+        <text x="20" y="516" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">LAST MONTH</text>
+
+        <rect x="20" y="532" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="544" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="46" y="550" width="28" height="36" rx="4" fill="#5E5548"/>
+        <text x="96" y="564" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Merino Wool Sweater</text>
+        <text x="96" y="582" font-family="DM Sans" font-size="12" fill="#6B5E50">Everlane · $85 · Manual upload</text>
+        <rect x="328" y="566" width="20" height="20" rx="4" fill="#332E29"/>
+        <text x="338" y="580" font-family="DM Sans" font-size="10" fill="#8B7D6E" text-anchor="middle">📷</text>
+
+        <rect x="20" y="614" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="626" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="48" y="632" width="24" height="34" rx="4" fill="#6B8F72"/>
+        <text x="96" y="646" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Utility Jacket</text>
+        <text x="96" y="664" font-family="DM Sans" font-size="12" fill="#6B5E50">Taylor Stitch · $248 · Auto-added</text>
+        <circle cx="338" cy="650" r="4" fill="#8FA882"/>
+
+        <!-- Tab bar -->
+        <rect x="0" y="730" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Closet</text>
+        <text x="137" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Outfits</text>
+        <text x="237" y="760" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Activity</text>
+        <text x="325" y="760" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="237" cy="744" r="2.5" fill="#D4956B"/>
+      </svg>
+    </div>
+    <div class="screen-info">
+      <h3>Activity Feed</h3>
+      <p class="screen-desc">Chronological log of all items added, grouped by time period. Each entry shows the item thumbnail, name, brand, price, and source (auto-added or manual). A summary stats bar at the top shows totals. Green dots = auto-added, camera icon = manual upload.</p>
+
+      <ul class="interaction-list">
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Activity item</strong> — opens Item Detail view for that item. Same drill-down as tapping from the Closet grid.</div>
+        </li>
+        <li>
+          <div class="interaction-icon auto">⚡</div>
+          <div><strong>New items animate in</strong> — when the app detects a new purchase (simulated in prototype), the new item slides into the top of the list with a gentle entrance animation.</div>
+        </li>
+        <li>
+          <div class="interaction-icon swipe">↕</div>
+          <div><strong>Scroll through history</strong> — grouped by "This Week", "Last Month", "Earlier". Summary bar stays sticky at top.</div>
+        </li>
+      </ul>
+
+      <div class="annotation">
+        <strong>Emotional design:</strong> This screen is where the "it just works" feeling lives. Seeing items auto-populate over time (even with fake data in the prototype) creates the sense of effortless wardrobe management. The green dots are deliberately satisfying — each one is a moment where the user did nothing and the app did the work.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ITEM DETAIL ==================== -->
+<div class="section" id="item-detail">
+  <div class="section-label">07 — Item Detail</div>
+  <div class="section-title">Every Item Tells a Story</div>
+  <div class="section-subtitle">The deep-dive view for any single item. Shows the clean cutout image, all metadata, editable tags, and usage stats. This is where cost-per-wear data turns passive tracking into active insight.</div>
+
+  <div class="screen-row reverse">
+    <div class="screen-info">
+      <h3>Item Detail</h3>
+      <p class="screen-desc">Full-screen item view accessible from anywhere an item appears (closet grid, activity feed, outfit builder). Large image, metadata tags, and the three-stat bar (price, times worn, cost-per-wear) provide immediate utility.</p>
+
+      <ul class="interaction-list">
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>Tags</strong> — editable. Tapping a tag opens a quick-edit popover. Users can change category, color, or season. Changes save immediately.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>"Log wear" (future)</strong> — not in MVP prototype, but the stat bar shows how wear tracking will work. We pre-populate some items with wear counts to demonstrate the cost-per-wear calculation.</div>
+        </li>
+        <li>
+          <div class="interaction-icon tap">tap</div>
+          <div><strong>⋯ menu</strong> — options include "Add to outfit", "Edit details", "Delete item". Delete asks for confirmation.</div>
+        </li>
+        <li>
+          <div class="interaction-icon swipe">←</div>
+          <div><strong>Swipe back</strong> — returns to previous screen (closet, activity, or outfit builder). Transition slides right.</div>
+        </li>
+      </ul>
+
+      <div class="annotation">
+        <strong>Cost-per-wear callout:</strong> The cost-per-wear stat turns orange when it's "high" (worn less than 3x for items over $50) and green when the item has been worn enough to bring the CPW under $10. This subtle color coding nudges users toward wearing what they own — the core behavior loop for retention.
+      </div>
+    </div>
+    <div class="screen-frame">
+      <svg viewBox="0 0 375 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="375" height="720" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="340" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">⋯</text>
+        <!-- Large item image -->
+        <rect x="40" y="120" width="295" height="300" rx="20" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="108" y="140" width="160" height="260" rx="8" fill="#332E29"/>
+        <rect x="138" y="155" width="100" height="170" rx="6" fill="#4A6B8A"/>
+        <rect x="123" y="155" width="30" height="70" rx="4" fill="#4A6B8A" transform="rotate(-12 123 155)"/>
+        <rect x="228" y="155" width="30" height="70" rx="4" fill="#4A6B8A" transform="rotate(12 258 155)"/>
+        <!-- Details -->
+        <text x="20" y="460" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0">Slim Fit Oxford Shirt</text>
+        <text x="20" y="484" font-family="DM Sans" font-size="14" fill="#6B5E50">J.Crew · Added Feb 10, 2026</text>
+        <!-- Tags -->
+        <rect x="20" y="504" width="48" height="28" rx="14" fill="#332E29"/>
+        <text x="44" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E" text-anchor="middle">Shirt</text>
+        <rect x="76" y="504" width="76" height="28" rx="14" fill="#332E29"/>
+        <text x="114" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E" text-anchor="middle">Navy Blue</text>
+        <rect x="160" y="504" width="62" height="28" rx="14" fill="#332E29"/>
+        <text x="191" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E" text-anchor="middle">Spring</text>
+        <rect x="230" y="504" width="52" height="28" rx="14" fill="#332E29"/>
+        <text x="256" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E" text-anchor="middle">Work</text>
+        <!-- Source indicator -->
+        <rect x="20" y="548" width="335" height="36" rx="10" fill="#2D3329"/>
+        <text x="40" y="571" font-family="DM Sans" font-size="12" fill="#8FA882">📧 Auto-added from email · J.Crew order #JC-29471</text>
+        <!-- Stats bar -->
+        <rect x="20" y="600" width="335" height="80" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <text x="80" y="630" font-family="Cormorant Garamond, serif" font-size="22" fill="#E8DDD0" text-anchor="middle">$68</text>
+        <text x="80" y="652" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Price</text>
+        <line x1="140" y1="612" x2="140" y2="668" stroke="#3D3630"/>
+        <text x="200" y="630" font-family="Cormorant Garamond, serif" font-size="22" fill="#E8DDD0" text-anchor="middle">4×</text>
+        <text x="200" y="652" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Times Worn</text>
+        <line x1="260" y1="612" x2="260" y2="668" stroke="#3D3630"/>
+        <text x="316" y="630" font-family="Cormorant Garamond, serif" font-size="22" fill="#D4956B" text-anchor="middle">$17</text>
+        <text x="316" y="652" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Cost/Wear</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROTOTYPE NOTES ==================== -->
+<div class="section">
+  <div class="section-label">08 — Implementation Notes</div>
+  <div class="section-title">Building the Prototype</div>
+  <div class="section-subtitle">Technical approach and what to prioritize for the interactive prototype.</div>
+
+  <div class="two-col-text">
+    <div>
+      <h3>Tech Stack</h3>
+      <p>Single-page React app with the Warm Studio design system. All data is hardcoded JSON — no backend needed. Routing simulated with React state (no URL changes). Animations via CSS transitions and Framer Motion for drag-and-drop.<br><br>
+      Deployed to the same Vercel instance as the report, accessible via a separate URL path. Mobile-first but responsive — should work in a phone browser for realistic testing.</p>
+    </div>
+    <div>
+      <h3>Priority Order</h3>
+      <p><strong style="color: var(--text);">Must have:</strong> Onboarding flow, closet grid with working filters, item detail view, tab navigation<br><br>
+      <strong style="color: var(--text);">Should have:</strong> Activity feed, outfit gallery, simulated auto-detection demo<br><br>
+      <strong style="color: var(--text);">Nice to have:</strong> Drag-and-drop outfit builder, search, scroll animations, haptic-style micro-interactions</p>
+    </div>
+  </div>
+
+  <div class="two-col-text">
+    <div>
+      <h3>Dummy Data Plan</h3>
+      <p>~30 clothing items across categories: 12 tops (shirts, sweaters, tees), 8 bottoms (chinos, jeans, shorts), 6 shoes (sneakers, boots, dress shoes), 5 outerwear (jackets, blazers). Each item has: name, brand, price, color, category, date added, source (auto/manual), and a simplified silhouette image. 4 pre-built outfits with names and dates.</p>
+    </div>
+    <div>
+      <h3>User Testing Goals</h3>
+      <p>Key questions to answer with this prototype:<br><br>
+      1. Does the email connect flow feel trustworthy?<br>
+      2. Is the closet grid easy to browse and filter?<br>
+      3. Does the auto-detection concept resonate emotionally?<br>
+      4. Is the information architecture intuitive (can users find what they need)?<br>
+      5. What's missing that users expect to see?</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Prototype Screen Spec · February 2026 · <a href="index.html">← Back to Strategy Report</a></p>
+</footer>
+
+</body>
+</html>
