@@ -5,26 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wardrobe App — Product Strategy Report</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
   :root {
-    --bg: #FDFAF6;
-    --bg-alt: #F5F0E8;
-    --bg-card: #FFFFFF;
-    --text: #1A1A1A;
-    --text-secondary: #6B6155;
-    --text-muted: #9B917F;
-    --accent: #C4704B;
-    --accent-light: #E8A67C;
-    --accent-bg: #FDF0E8;
-    --sage: #7A8F72;
-    --sage-light: #E8EDE6;
-    --sage-bg: #F2F5F0;
-    --warm: #B8956A;
-    --warm-light: #F5EDE0;
-    --border: #E8E0D4;
-    --shadow: 0 2px 12px rgba(26,26,26,0.06);
-    --shadow-lg: 0 8px 32px rgba(26,26,26,0.08);
+    --bg: #1C1916;
+    --bg-alt: #241F1B;
+    --bg-card: #2A2520;
+    --text: #E8DDD0;
+    --text-secondary: #A89A8C;
+    --text-muted: #6B5E50;
+    --accent: #D4956B;
+    --accent-light: #E8B896;
+    --accent-bg: rgba(212,149,107,0.1);
+    --sage: #8FA882;
+    --sage-light: rgba(143,168,130,0.15);
+    --sage-bg: rgba(143,168,130,0.08);
+    --warm: #C4A87A;
+    --warm-light: rgba(196,168,122,0.12);
+    --border: rgba(232,221,208,0.1);
+    --shadow: 0 2px 12px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.3);
     --radius: 16px;
     --radius-sm: 10px;
   }
@@ -32,7 +32,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'DM Sans', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
@@ -40,9 +40,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Navigation */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(253,250,246,0.92);
+    background: rgba(28,25,22,0.92);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 14px 0;
@@ -52,7 +53,7 @@
     display: flex; align-items: center; justify-content: space-between;
   }
   nav .logo {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 20px; color: var(--accent);
   }
   nav ul { list-style: none; display: flex; gap: 28px; }
@@ -63,6 +64,7 @@
   }
   nav a:hover { color: var(--accent); }
 
+  /* Hero */
   .hero {
     padding: 160px 32px 80px;
     max-width: 1200px; margin: 0 auto;
@@ -73,8 +75,9 @@
     margin-bottom: 20px;
   }
   .hero h1 {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
     line-height: 1.1; max-width: 800px;
     margin-bottom: 24px;
   }
@@ -83,6 +86,7 @@
     max-width: 600px; line-height: 1.8;
   }
 
+  /* Section */
   section {
     max-width: 1200px; margin: 0 auto;
     padding: 80px 32px;
@@ -94,8 +98,9 @@
     margin-bottom: 12px;
   }
   .section-title {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(28px, 4vw, 42px);
+    font-weight: 300;
     margin-bottom: 16px; line-height: 1.2;
   }
   .section-subtitle {
@@ -104,8 +109,8 @@
   }
 
   h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px; margin-bottom: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 12px;
   }
   h4 {
     font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
@@ -113,6 +118,7 @@
     margin-bottom: 8px;
   }
 
+  /* Cards */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -130,7 +136,7 @@
     transform: translateY(-2px);
   }
   .card .card-name {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 22px; margin-bottom: 4px;
   }
   .card .card-tagline {
@@ -178,6 +184,7 @@
   .sw-col.strengths ul li::before { background: var(--sage); }
   .sw-col.weaknesses ul li::before { background: var(--accent); }
 
+  /* Feature Matrix */
   .matrix-table {
     width: 100%; border-collapse: collapse;
     font-size: 13px; overflow-x: auto;
@@ -200,6 +207,7 @@
   .cross { color: var(--text-muted); }
   .partial { color: var(--warm); }
 
+  /* Callout */
   .callout {
     background: var(--accent-bg);
     border-left: 4px solid var(--accent);
@@ -215,6 +223,7 @@
   .callout.sage h4 { color: var(--sage); }
   .callout p { font-size: 14px; color: var(--text-secondary); }
 
+  /* Stat Row */
   .stat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -228,7 +237,7 @@
     text-align: center;
   }
   .stat-number {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 36px; color: var(--accent);
     margin-bottom: 4px;
   }
@@ -237,6 +246,7 @@
     letter-spacing: 0.02em;
   }
 
+  /* Two Column */
   .two-col {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 48px; align-items: start;
@@ -246,10 +256,12 @@
     .strengths-weaknesses { grid-template-columns: 1fr; }
   }
 
+  /* Prose */
   .prose { max-width: 720px; }
   .prose p { margin-bottom: 16px; font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
   .prose p strong { color: var(--text); }
 
+  /* Trend bars */
   .trend-item {
     display: flex; align-items: center; gap: 16px;
     padding: 16px 0; border-bottom: 1px solid var(--border);
@@ -263,6 +275,7 @@
   .trend-bar.fad { background: var(--accent); }
   .trend-label { font-size: 11px; color: var(--text-muted); min-width: 60px; text-align: right; }
 
+  /* Wireframes */
   .wireframe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -274,13 +287,15 @@
     border-radius: var(--radius);
     overflow: hidden;
   }
-  .wireframe-card svg { width: 100%; display: block; }
+  .wireframe-card svg {
+    width: 100%; display: block;
+  }
   .wireframe-card .wireframe-label {
     padding: 20px 24px;
     border-top: 1px solid var(--border);
   }
   .wireframe-card .wireframe-label h4 {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 17px; text-transform: none;
     letter-spacing: 0; margin-bottom: 6px;
   }
@@ -288,12 +303,17 @@
     font-size: 13px; color: var(--text-secondary); line-height: 1.6;
   }
 
-  .journey { position: relative; padding-left: 40px; }
+  /* Journey */
+  .journey {
+    position: relative; padding-left: 40px;
+  }
   .journey::before {
     content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
     width: 2px; background: var(--border);
   }
-  .journey-step { position: relative; margin-bottom: 32px; }
+  .journey-step {
+    position: relative; margin-bottom: 32px;
+  }
   .journey-step::before {
     content: ''; position: absolute; left: -33px; top: 6px;
     width: 12px; height: 12px; border-radius: 50%;
@@ -304,14 +324,19 @@
     text-transform: none; letter-spacing: 0;
     margin-bottom: 6px; color: var(--text);
   }
-  .journey-step p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-  .journey-step .touchpoints { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .journey-step p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+  }
+  .journey-step .touchpoints {
+    margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;
+  }
   .touchpoint {
     font-size: 11px; font-weight: 500;
     background: var(--bg-alt); color: var(--text-secondary);
     padding: 3px 10px; border-radius: 100px;
   }
 
+  /* Footer */
   footer {
     border-top: 1px solid var(--border);
     padding: 40px 32px;
@@ -319,44 +344,141 @@
     font-size: 13px; color: var(--text-muted);
   }
 
+  /* Color swatches */
   .swatch-row { display: flex; gap: 8px; margin: 12px 0; }
-  .swatch { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); }
+  .swatch {
+    width: 40px; height: 40px; border-radius: 10px;
+    border: 1px solid var(--border);
+  }
 
-  .vibe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  /* Design vibe card */
+  .vibe-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
   @media (max-width: 768px) { .vibe-grid { grid-template-columns: 1fr; } }
-  .vibe-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-  .vibe-card .vibe-visual { height: 120px; display: flex; align-items: center; justify-content: center; }
+  .vibe-card {
+    border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .vibe-card .vibe-visual {
+    height: 120px; display: flex; align-items: center; justify-content: center;
+  }
   .vibe-card .vibe-info { padding: 20px; background: var(--bg-card); }
-  .vibe-card .vibe-info h4 { font-family: 'DM Serif Display', serif; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 6px; }
+  .vibe-card .vibe-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 6px;
+  }
   .vibe-card .vibe-info p { font-size: 13px; color: var(--text-secondary); }
 
-  .recommendation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .rec-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
-  .rec-card .rec-number { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--accent-light); margin-bottom: 12px; }
-  .rec-card h4 { font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; font-family: 'DM Serif Display', serif; }
+  .recommendation-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .rec-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .rec-card .rec-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; color: var(--accent-light); margin-bottom: 12px;
+  }
+  .rec-card h4 {
+    font-size: 16px; text-transform: none;
+    letter-spacing: 0; margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', serif;
+  }
   .rec-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
   .challenge-list { list-style: none; }
-  .challenge-list li { padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: start; }
+  .challenge-list li {
+    padding: 16px 0; border-bottom: 1px solid var(--border);
+    display: flex; gap: 16px; align-items: start;
+  }
   .challenge-list li:last-child { border-bottom: none; }
-  .challenge-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .challenge-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--accent-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    margin-top: 2px;
+  }
   .challenge-text h5 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
   .challenge-text p { font-size: 13px; color: var(--text-secondary); }
 
   .toc { list-style: none; }
   .toc li { padding: 6px 0; }
-  .toc a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .toc a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
   .toc a:hover { color: var(--accent); }
-  .toc .toc-num { font-family: 'DM Serif Display', serif; color: var(--accent-light); margin-right: 12px; font-size: 16px; }
+  .toc .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--accent-light); margin-right: 12px;
+    font-size: 16px;
+  }
 
-  .future-card { background: linear-gradient(135deg, var(--sage-bg), var(--warm-light)); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; }
-  .future-card h4 { font-family: 'DM Serif Display', serif; font-size: 18px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+  .future-card {
+    background: linear-gradient(135deg, rgba(143,168,130,0.06), rgba(196,168,122,0.08));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+  .future-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; text-transform: none;
+    letter-spacing: 0; margin-bottom: 8px;
+  }
   .future-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-  .future-card .phase { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.7); color: var(--sage); margin-bottom: 12px; }
+  .future-card .phase {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px;
+    background: rgba(143,168,130,0.15); color: var(--sage);
+    margin-bottom: 12px;
+  }
+  /* Noise & glow overlays */
+  .noise-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+  .glow-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212,149,107,0.06) 0%, transparent 60%);
+  }
+
+  /* Italic accent for emphasis */
+  em.accent, .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
 </style>
 </head>
 <body>
 
+<!-- Noise texture overlay -->
+<svg class="noise-overlay" width="100%" height="100%">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+<div class="glow-overlay"></div>
+
+<!-- Nav -->
 <nav>
   <div class="nav-inner">
     <div class="logo">Closet Intelligence</div>
@@ -372,17 +494,19 @@
   </div>
 </nav>
 
+<!-- Hero -->
 <div class="hero">
   <div class="hero-label">Product Strategy Report — February 2026</div>
-  <h1>The Wardrobe That Builds Itself</h1>
+  <h1>The Wardrobe That <em>Builds Itself</em></h1>
   <p>A competitive analysis, trend report, and product strategy for an automatic wardrobe management app targeting busy professionals who want to dress intentionally with zero maintenance.</p>
+
   <div style="margin-top: 48px;">
     <ul class="toc">
       <li><a href="#landscape"><span class="toc-num">01</span> Competitive Landscape</a></li>
       <li><a href="#matrix"><span class="toc-num">02</span> Feature Matrix</a></li>
-      <li><a href="#trends"><span class="toc-num">03</span> Shopping &amp; Consumer Trends</a></li>
+      <li><a href="#trends"><span class="toc-num">03</span> Shopping & Consumer Trends</a></li>
       <li><a href="#design"><span class="toc-num">04</span> Visual Design Trends</a></li>
-      <li><a href="#gaps"><span class="toc-num">05</span> UX Gaps &amp; Opportunities</a></li>
+      <li><a href="#gaps"><span class="toc-num">05</span> UX Gaps & Opportunities</a></li>
       <li><a href="#recs"><span class="toc-num">06</span> Product Recommendations</a></li>
       <li><a href="#wireframes"><span class="toc-num">07</span> Wireframes</a></li>
       <li><a href="#journeys"><span class="toc-num">08</span> User Journeys</a></li>
@@ -392,12 +516,15 @@
   </div>
 </div>
 
+<!-- ==================== COMPETITIVE LANDSCAPE ==================== -->
 <section id="landscape">
   <div class="section-label">01 — Competitive Landscape</div>
   <div class="section-title">Who's in the Closet</div>
   <div class="section-subtitle">The digital wardrobe space has matured rapidly since 2023. Six primary competitors span the range from free community platforms to AI-powered personal stylists — but none have cracked the "zero-effort" onboarding problem.</div>
 
   <div class="card-grid">
+
+    <!-- Indyx -->
     <div class="card">
       <div class="card-name">Indyx</div>
       <div class="card-tagline">The polished all-rounder</div>
@@ -408,12 +535,28 @@
       <div class="card-body">
         <p>Best-in-class free tier with unlimited items, AI background removal, outfit creation, and wear tracking. Visual design is clean and fashion-forward. Monetizes through optional 1:1 stylist services and professional cataloging ($295 for 100 items).</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>Unlimited free features</li><li>Beautiful, ad-free interface</li><li>Cost-per-wear analytics</li><li>Forward receipt support</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Manual effort to populate closet</li><li>Premium services expensive</li><li>Limited AI recommendations</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>Unlimited free features</li>
+              <li>Beautiful, ad-free interface</li>
+              <li>Cost-per-wear analytics</li>
+              <li>Forward receipt support</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Manual effort to populate closet</li>
+              <li>Premium services expensive</li>
+              <li>Limited AI recommendations</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Fits -->
     <div class="card">
       <div class="card-name">Fits</div>
       <div class="card-tagline">The fast-growing newcomer</div>
@@ -422,14 +565,30 @@
         <span class="tag tag-paid">Pro subscription</span>
       </div>
       <div class="card-body">
-        <p>Launched 2023, already 2M+ users. Virtual mannequin swiping for outfit creation is a standout UX pattern. AI auto-detects colors, categories, and brands. Strong free tier makes paid conversion weak.</p>
+        <p>Launched 2023, already 2M+ users. Virtual mannequin swiping for outfit creation is a standout UX pattern. AI auto-detects colors, categories, and brands. Strong free tier makes paid conversion weak — users don't feel the need to upgrade.</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>Engaging mannequin UI</li><li>AI auto-tagging</li><li>Modern, polished design</li><li>Rapid user growth</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Weak free-to-paid conversion</li><li>Limited color categories</li><li>Scales poorly with large wardrobes</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>Engaging mannequin UI</li>
+              <li>AI auto-tagging</li>
+              <li>Modern, polished design</li>
+              <li>Rapid user growth</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Weak free-to-paid conversion</li>
+              <li>Limited color categories</li>
+              <li>Scales poorly with large wardrobes</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Acloset -->
     <div class="card">
       <div class="card-name">Acloset</div>
       <div class="card-tagline">Community-first with a hard paywall</div>
@@ -440,12 +599,27 @@
       <div class="card-body">
         <p>Strong AI tagging and background removal. Millions of community outfit ideas. Integrated pre-loved marketplace. However, the 100-item paywall catches virtually all real users, and the marketplace/social feed clutters the experience.</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>Community outfit inspiration</li><li>Pre-loved marketplace</li><li>Good auto-tagging AI</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Harsh 100-item paywall</li><li>Cluttered interface</li><li>AI outfits often miss the mark</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>Community outfit inspiration</li>
+              <li>Pre-loved marketplace</li>
+              <li>Good auto-tagging AI</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Harsh 100-item paywall</li>
+              <li>Cluttered interface</li>
+              <li>AI outfits often miss the mark</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- StyleDNA -->
     <div class="card">
       <div class="card-name">StyleDNA</div>
       <div class="card-tagline">Color science meets AI chatbot</div>
@@ -456,12 +630,27 @@
       <div class="card-body">
         <p>Unique color analysis from a selfie determines your seasonal palette. AI stylist chat is interesting but the core wardrobe scanning is unreliable — frequently misclassifies items and refuses to use uploaded items outside your "assigned" palette.</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>Unique color science angle</li><li>AI stylist chat is intuitive</li><li>Personalized palette system</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Unreliable item recognition</li><li>Overrides user's actual clothes</li><li>Hidden palette upsell</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>Unique color science angle</li>
+              <li>AI stylist chat is intuitive</li>
+              <li>Personalized palette system</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Unreliable item recognition</li>
+              <li>Overrides user's actual clothes</li>
+              <li>Hidden palette upsell</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Whering -->
     <div class="card">
       <div class="card-name">Whering</div>
       <div class="card-tagline">Totally free, rough around the edges</div>
@@ -471,12 +660,28 @@
       <div class="card-body">
         <p>Completely free with no ads — unusual in this space. 100M+ item database, collaborative outfit creation, and a Chrome extension. But frequent crashes, buggy background removal, and an unfocused feature set undermine the proposition.</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>Entirely free, no ads</li><li>Massive item database</li><li>Chrome extension</li><li>Fun Clueless-inspired UI</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Frequent crashes and bugs</li><li>Outdated feel</li><li>Unfocused product vision</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>Entirely free, no ads</li>
+              <li>Massive item database</li>
+              <li>Chrome extension</li>
+              <li>Fun Clueless-inspired UI</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Frequent crashes and bugs</li>
+              <li>Outdated feel</li>
+              <li>Unfocused product vision</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Stylebook -->
     <div class="card">
       <div class="card-name">Stylebook</div>
       <div class="card-tagline">The OG, showing its age</div>
@@ -486,8 +691,24 @@
       <div class="card-body">
         <p>15+ years old with 90+ features and a loyal user base. Magazine-style outfit layouts are still charming. Lifetime access for $4.99 is a great value proposition. But the interface feels dated, navigation is unintuitive, and there's no AI auto-tagging. iOS only.</p>
         <div class="strengths-weaknesses">
-          <div class="sw-col strengths"><h4>Strengths</h4><ul><li>One-time $4.99 purchase</li><li>Extremely feature-rich</li><li>15 years of trust</li><li>ShopStyle integration</li></ul></div>
-          <div class="sw-col weaknesses"><h4>Gaps</h4><ul><li>Dated UI/UX design</li><li>No AI features</li><li>iOS only</li><li>High manual setup effort</li></ul></div>
+          <div class="sw-col strengths">
+            <h4>Strengths</h4>
+            <ul>
+              <li>One-time $4.99 purchase</li>
+              <li>Extremely feature-rich</li>
+              <li>15 years of trust</li>
+              <li>ShopStyle integration</li>
+            </ul>
+          </div>
+          <div class="sw-col weaknesses">
+            <h4>Gaps</h4>
+            <ul>
+              <li>Dated UI/UX design</li>
+              <li>No AI features</li>
+              <li>iOS only</li>
+              <li>High manual setup effort</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -499,103 +720,277 @@
   </div>
 </section>
 
+<!-- ==================== FEATURE MATRIX ==================== -->
 <section id="matrix">
   <div class="section-label">02 — Feature Comparison</div>
   <div class="section-title">Feature Matrix</div>
   <div class="section-subtitle">A side-by-side look at how each competitor handles the core capabilities that matter most for a wardrobe app targeting busy professionals.</div>
+
   <div class="matrix-wrap">
     <table class="matrix-table">
-      <thead><tr><th>Feature</th><th>Indyx</th><th>Fits</th><th>Acloset</th><th>StyleDNA</th><th>Whering</th><th>Stylebook</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Indyx</th>
+          <th>Fits</th>
+          <th>Acloset</th>
+          <th>StyleDNA</th>
+          <th>Whering</th>
+          <th>Stylebook</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td>Email receipt import</td><td class="partial">◐ Forward only</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-        <tr><td>Auto background removal</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="partial">◐ Buggy</td><td class="cross">✗</td></tr>
-        <tr><td>AI auto-tagging</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="partial">◐ Unreliable</td><td class="check">✓</td><td class="cross">✗</td></tr>
-        <tr><td>AI outfit suggestions</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="partial">◐ Paid</td><td class="cross">✗</td></tr>
-        <tr><td>Weather-aware suggestions</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-        <tr><td>Outfit collage builder</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
-        <tr><td>Cost-per-wear tracking</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
-        <tr><td>Wear calendar</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
-        <tr><td>Browser extension</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td></tr>
-        <tr><td>Social / sharing</td><td class="check">✓</td><td class="partial">◐ Basic</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td></tr>
-        <tr><td>Unlimited free items</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗ (100 cap)</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓ (paid app)</td></tr>
-        <tr><td>Android support</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗ iOS only</td></tr>
+        <tr>
+          <td>Email receipt import</td>
+          <td class="partial">◐ Forward only</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Auto background removal</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="partial">◐ Buggy</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>AI auto-tagging</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="partial">◐ Unreliable</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>AI outfit suggestions</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="partial">◐ Paid</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Weather-aware suggestions</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Outfit collage builder</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Cost-per-wear tracking</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Wear calendar</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Browser extension</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Social / sharing</td>
+          <td class="check">✓</td>
+          <td class="partial">◐ Basic</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Unlimited free items</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗ (100 cap)</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓ (paid app)</td>
+        </tr>
+        <tr>
+          <td>Android support</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗ iOS only</td>
+        </tr>
       </tbody>
     </table>
   </div>
+
   <div class="callout sage" style="margin-top: 32px;">
     <h4>The Key Takeaway</h4>
-    <p>No competitor offers true automatic wardrobe building from purchase data. Indyx supports forwarding receipts manually, and the now-defunct Finery was the only app to do email-based auto-detection. This is the single largest gap in the market.</p>
+    <p>No competitor offers true automatic wardrobe building from purchase data. Indyx supports forwarding receipts manually, and the now-defunct Finery was the only app to do email-based auto-detection. This is the single largest gap in the market. Every app still requires the user to do the tedious work of photographing and uploading each item.</p>
   </div>
 </section>
 
+<!-- ==================== SHOPPING TRENDS ==================== -->
 <section id="trends">
   <div class="section-label">03 — Market Context</div>
   <div class="section-title">How People Shop Now</div>
   <div class="section-subtitle">Consumer behavior is shifting rapidly. The rise of intentional purchasing, social commerce, and AI assistance is reshaping how people build and manage their wardrobes.</div>
+
   <div class="stat-grid">
-    <div class="stat-card"><div class="stat-number">$8.5B</div><div class="stat-label">Projected wardrobe app market by 2032</div></div>
-    <div class="stat-card"><div class="stat-number">64%</div><div class="stat-label">Gen Z using wardrobe apps weekly</div></div>
-    <div class="stat-card"><div class="stat-number">236%</div><div class="stat-label">Wardrobe app download surge, 2023–24</div></div>
-    <div class="stat-card"><div class="stat-number">75%</div><div class="stat-label">Consumers preferring digital receipts</div></div>
+    <div class="stat-card">
+      <div class="stat-number">$8.5B</div>
+      <div class="stat-label">Projected wardrobe app market by 2032</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">64%</div>
+      <div class="stat-label">Gen Z using wardrobe apps weekly</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">236%</div>
+      <div class="stat-label">Wardrobe app download surge, 2023–24</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">75%</div>
+      <div class="stat-label">Consumers preferring digital receipts</div>
+    </div>
   </div>
+
   <div class="two-col">
     <div class="prose">
       <h3>Intentional Purchasing Is Winning</h3>
-      <p>The dominant shift isn't just <em>what</em> people buy — it's <em>how deliberately</em> they buy it. 64% of US shoppers traded down in Q3 2024, but they're still buying — each purchase is far more considered. The "loud budgeting" trend reflects people setting strict spend limits.</p>
+      <p>The dominant shift isn't just <em>what</em> people buy — it's <em>how deliberately</em> they buy it. Consumers are rejecting impulse culture. 64% of US shoppers traded down in Q3 2024, but they're still buying — each purchase is just far more considered. The "loud budgeting" trend reflects people setting strict spend limits and researching the "perfect product" before committing.</p>
       <p>This creates a natural opening for a wardrobe app that helps users <strong>see what they already own</strong> before buying more. If the app can passively track purchases, it becomes the ledger of a more intentional wardrobe.</p>
-      <p>The secondhand apparel market is projected to hit <strong>$350 billion by 2028</strong>, growing 3x faster than new apparel. 60% of consumers say secondhand provides the most value for money.</p>
+      <p>The secondhand apparel market is projected to hit <strong>$350 billion by 2028</strong>, growing 3x faster than new apparel. 60% of consumers say secondhand provides the most value for money. Branded resale has seen 300% sales growth since 2021.</p>
     </div>
     <div class="prose">
       <h3>The Post-Purchase Gap</h3>
-      <p>75% of consumers now prefer digital receipts, and digital receipt adoption is growing at 7.5% CAGR. Email dominates at 45%, followed by QR codes (33%) and apps (22%). Receipts are evolving from transaction records into <strong>mini brand portals</strong>.</p>
+      <p>Here's what's interesting: 75% of consumers now prefer digital receipts, and digital receipt adoption is growing at 7.5% CAGR. Email dominates at 45%, followed by QR codes (33%) and apps (22%). Receipts are evolving from transaction records into <strong>mini brand portals</strong> — embedded care guides, product videos, and post-purchase recommendations.</p>
       <p>Yet <strong>no wardrobe app is seriously tapping into this data stream.</strong> Finery proved the concept before being acquired by Stitch Fix in 2020. The email-receipt-to-wardrobe pipeline is validated but abandoned.</p>
-      <p>Meanwhile, the AI shopping assistant market hit <strong>$3.65 billion in 2024</strong> and is projected to reach $24.9 billion by 2032. But these are shopping assistants — none help you <em>manage what you've already bought.</em></p>
+      <p>Meanwhile, the AI shopping assistant market hit <strong>$3.65 billion in 2024</strong> and is projected to reach $24.9 billion by 2032. Walmart, Amazon, and Shopify all have AI agents. But these are shopping assistants — none help you <em>manage what you've already bought.</em></p>
     </div>
   </div>
+
   <div class="callout" style="margin-top: 40px;">
     <h4>Platform Response</h4>
-    <p>TikTok Shop's GMV surged from $1B (2021) to $33B (2024). Social commerce is now a $1.2 trillion market. But all of this energy is focused on getting people to buy — almost none of it on what happens after the purchase. The post-purchase experience is the biggest underserved moment in the fashion consumer journey.</p>
+    <p>TikTok Shop's GMV surged from $1B (2021) to $33B (2024). Instagram Reels deliver 36% more reach than other content types. Social commerce is now a $1.2 trillion market. But all of this energy is focused on getting people to buy — almost none of it on what happens after the purchase. The post-purchase experience is the biggest underserved moment in the fashion consumer journey.</p>
   </div>
 </section>
 
+<!-- ==================== DESIGN TRENDS ==================== -->
 <section id="design">
   <div class="section-label">04 — Visual Design Intelligence</div>
   <div class="section-title">Design Direction</div>
   <div class="section-subtitle">Identifying which visual trends have staying power versus which are passing through — and how this informs the product's visual identity.</div>
+
   <h3 style="margin-bottom: 24px;">Trend Longevity Assessment</h3>
   <div style="max-width: 700px;">
-    <div class="trend-item"><div class="trend-name">Warm earth tones</div><div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 92%"></div></div><div class="trend-label">Lasting</div></div>
-    <div class="trend-item"><div class="trend-name">Rounded, soft UI</div><div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 88%"></div></div><div class="trend-label">Lasting</div></div>
-    <div class="trend-item"><div class="trend-name">Bold serif headlines</div><div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 85%"></div></div><div class="trend-label">Lasting</div></div>
-    <div class="trend-item"><div class="trend-name">Micro-interactions</div><div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 90%"></div></div><div class="trend-label">Lasting</div></div>
-    <div class="trend-item"><div class="trend-name">Bento grid layouts</div><div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 70%"></div></div><div class="trend-label">Moderate</div></div>
-    <div class="trend-item"><div class="trend-name">AI-generated imagery</div><div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 65%"></div></div><div class="trend-label">Moderate</div></div>
-    <div class="trend-item"><div class="trend-name">Gesture-only navigation</div><div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 55%"></div></div><div class="trend-label">Moderate</div></div>
-    <div class="trend-item"><div class="trend-name">Glassmorphism</div><div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 30%"></div></div><div class="trend-label">Fading</div></div>
-    <div class="trend-item"><div class="trend-name">Extreme maximalism</div><div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 25%"></div></div><div class="trend-label">Fading</div></div>
-    <div class="trend-item"><div class="trend-name">Neumorphism</div><div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 20%"></div></div><div class="trend-label">Fading</div></div>
+    <div class="trend-item">
+      <div class="trend-name">Warm earth tones</div>
+      <div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 92%"></div></div>
+      <div class="trend-label">Lasting</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Rounded, soft UI</div>
+      <div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 88%"></div></div>
+      <div class="trend-label">Lasting</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Bold serif headlines</div>
+      <div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 85%"></div></div>
+      <div class="trend-label">Lasting</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Micro-interactions</div>
+      <div class="trend-bar-wrap"><div class="trend-bar lasting" style="width: 90%"></div></div>
+      <div class="trend-label">Lasting</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Bento grid layouts</div>
+      <div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 70%"></div></div>
+      <div class="trend-label">Moderate</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">AI-generated imagery</div>
+      <div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 65%"></div></div>
+      <div class="trend-label">Moderate</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Gesture-only navigation</div>
+      <div class="trend-bar-wrap"><div class="trend-bar moderate" style="width: 55%"></div></div>
+      <div class="trend-label">Moderate</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Glassmorphism</div>
+      <div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 30%"></div></div>
+      <div class="trend-label">Fading</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Extreme maximalism</div>
+      <div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 25%"></div></div>
+      <div class="trend-label">Fading</div>
+    </div>
+    <div class="trend-item">
+      <div class="trend-name">Neumorphism</div>
+      <div class="trend-bar-wrap"><div class="trend-bar fad" style="width: 20%"></div></div>
+      <div class="trend-label">Fading</div>
+    </div>
   </div>
+
   <div style="margin-top: 56px;">
     <h3 style="margin-bottom: 24px;">Recommended Visual Direction</h3>
     <div class="vibe-grid">
       <div class="vibe-card">
-        <div class="vibe-visual" style="background: linear-gradient(135deg, #F5F0E8, #E8DED0);">
+        <div class="vibe-visual" style="background: linear-gradient(135deg, #2A2520, #332E29);">
           <div class="swatch-row">
-            <div class="swatch" style="background: #C4704B;"></div>
-            <div class="swatch" style="background: #7A8F72;"></div>
-            <div class="swatch" style="background: #B8956A;"></div>
-            <div class="swatch" style="background: #1A1A1A;"></div>
-            <div class="swatch" style="background: #FDFAF6;"></div>
+            <div class="swatch" style="background: #D4956B;"></div>
+            <div class="swatch" style="background: #8FA882;"></div>
+            <div class="swatch" style="background: #C4A87A;"></div>
+            <div class="swatch" style="background: #1C1916;"></div>
+            <div class="swatch" style="background: #E8DDD0;"></div>
           </div>
         </div>
-        <div class="vibe-info"><h4>Color Palette</h4><p>Warm neutrals anchored by terracotta and sage. Feels organic and lived-in, not sterile. Pantone's "Mocha Mousse" energy — sophisticated but approachable.</p></div>
+        <div class="vibe-info">
+          <h4>Color Palette</h4>
+          <p>Warm neutrals anchored by terracotta and sage. Feels organic and lived-in, not sterile. Pantone's "Mocha Mousse" energy — sophisticated but approachable.</p>
+        </div>
       </div>
       <div class="vibe-card">
         <div class="vibe-visual" style="background: var(--bg-card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px;">
-          <span style="font-family: 'DM Serif Display', serif; font-size: 28px;">Your Closet</span>
-          <span style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-secondary); font-weight: 400;">3 new items added this week</span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: #E8DDD0;">Your Closet</span>
+          <span style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text-secondary); font-weight: 400;">3 new items added this week</span>
         </div>
-        <div class="vibe-info"><h4>Typography</h4><p>Serif headlines (DM Serif, Playfair) for warmth and personality. Clean sans-serif body (Inter, SF Pro) for readability. This pairing is having a long moment.</p></div>
+        <div class="vibe-info">
+          <h4>Typography</h4>
+          <p>Light-weight serif headlines (Cormorant Garamond) for quiet luxury. Clean sans-serif body (DM Sans) for readability. The contrast between thin serifs and sturdy sans creates an effortlessly refined feel.</p>
+        </div>
       </div>
       <div class="vibe-card">
         <div class="vibe-visual" style="background: var(--bg-alt); display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px;">
@@ -603,319 +998,506 @@
           <div style="width: 60px; height: 80px; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border);"></div>
           <div style="width: 60px; height: 60px; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border);"></div>
         </div>
-        <div class="vibe-info"><h4>Layout &amp; Shape</h4><p>Generously rounded corners (14–20px), soft shadows, card-based layouts. Bento grids for the closet view. "Exaggerated minimalism" — clean with moments of boldness.</p></div>
+        <div class="vibe-info">
+          <h4>Layout & Shape</h4>
+          <p>Generously rounded corners (14–20px), soft shadows, card-based layouts. Bento grids for the closet view. "Exaggerated minimalism" — clean with moments of boldness.</p>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="two-col" style="margin-top: 56px;">
     <div class="prose">
       <h3>What's Lasting</h3>
-      <p><strong>Warm minimalism</strong> — the combination of earth-tone palettes, soft UI elements, and generous whitespace — is a genuine paradigm shift, not a seasonal trend. Pantone chose "Mocha Mousse" for 2025; "Future Dusk" is the 2025 color of the year.</p>
-      <p><strong>Bold serif typography</strong> as a design tool for personality is here to stay. Apps using bolder fonts show 10% higher engagement.</p>
-      <p><strong>Micro-interactions</strong> are now table stakes. Gartner predicts 75% of customer-facing apps will use them by end of 2025. Adobe's A/B tests show 12% higher click-through rates with subtle motion.</p>
+      <p><strong>Warm minimalism</strong> — the combination of earth-tone palettes, soft UI elements, and generous whitespace — is a genuine paradigm shift, not a seasonal trend. It reflects a broader cultural move toward comfort and intentionality. Pantone chose "Mocha Mousse" for 2025; "Future Dusk" is the 2025 color of the year. Both signal warmth over sterility.</p>
+      <p><strong>Bold serif typography</strong> as a design tool for personality is here to stay. Apps using bolder fonts show 10% higher engagement. Custom typefaces are becoming brand identity — not decoration.</p>
+      <p><strong>Micro-interactions</strong> are now table stakes. Gartner predicts 75% of customer-facing apps will use them by end of 2025. Adobe's A/B tests show 12% higher click-through rates with subtle motion. This is user expectation now, not innovation.</p>
     </div>
     <div class="prose">
       <h3>What's Passing</h3>
-      <p><strong>Glassmorphism and neumorphism</strong> peaked as visual novelties but struggle with accessibility and readability. They're retreating to niche use cases rather than system-wide adoption.</p>
-      <p><strong>Extreme maximalism</strong> is already settling. The more sustainable version — "exaggerated minimalism" that combines clean layouts with bold accents — is replacing full-blown maximalism.</p>
-      <p><strong>Gesture-only navigation</strong> has a discoverability problem. 88% of users expect swipe patterns, but removing all visible UI creates confusion. The winning approach is gesture-supported with visible affordances.</p>
+      <p><strong>Glassmorphism and neumorphism</strong> peaked as visual novelties but struggle with accessibility and readability. They're retreating to niche use cases (hero sections, promotional surfaces) rather than system-wide adoption.</p>
+      <p><strong>Extreme maximalism</strong> is already settling. The more sustainable version — "exaggerated minimalism" that combines clean layouts with bold accents — is replacing full-blown maximalism. The functional core stays minimal; the emotional moments get expressive.</p>
+      <p><strong>Gesture-only navigation</strong> has a discoverability problem. 88% of users expect swipe patterns, but removing all visible UI creates confusion. The winning approach is gesture-supported with visible affordances — not gesture-exclusive.</p>
     </div>
   </div>
 </section>
 
+<!-- ==================== GAPS ==================== -->
 <section id="gaps">
   <div class="section-label">05 — Opportunity Analysis</div>
   <div class="section-title">Where They All Fall Short</div>
-  <div class="section-subtitle">After analyzing six primary competitors and the broader market, six critical gaps emerge — each representing a product opportunity.</div>
+  <div class="section-subtitle">After analyzing six primary competitors and the broader market, five critical gaps emerge — each representing a product opportunity.</div>
+
   <div class="recommendation-grid">
-    <div class="rec-card"><div class="rec-number">01</div><h4>The Onboarding Wall</h4><p>Every app requires users to manually photograph, upload, and tag each item. For someone with 50–200 items, this is hours of work before the app provides any value. It's the #1 reason users abandon these apps.</p></div>
-    <div class="rec-card"><div class="rec-number">02</div><h4>The Maintenance Burden</h4><p>Even after initial setup, every new purchase requires manual addition. There's no "set it and forget it" — users must remember to photograph and log each new item, creating ongoing friction.</p></div>
-    <div class="rec-card"><div class="rec-number">03</div><h4>The Receipt Data Void</h4><p>75% of consumers get digital receipts. This data stream contains item names, prices, brands, and often product images — everything needed to populate a wardrobe. Yet only the defunct Finery ever attempted to use it.</p></div>
-    <div class="rec-card"><div class="rec-number">04</div><h4>The "What Do I Already Own?" Problem</h4><p>Intentional purchasing is rising, but no app makes it easy to check your wardrobe before buying. If users could quickly see they already own 12 white t-shirts, they'd make smarter purchase decisions.</p></div>
-    <div class="rec-card"><div class="rec-number">05</div><h4>The Intelligence Gap</h4><p>AI outfit suggestions across competitors are universally described as "hit or miss" at best. No app has cracked truly personalized, context-aware recommendations that factor in weather, calendar, past wear history, and personal style.</p></div>
-    <div class="rec-card"><div class="rec-number">06</div><h4>Busy Professional Neglect</h4><p>Most wardrobe apps target fashion-forward users who enjoy curation. Busy professionals who want to reduce decision fatigue — not increase it — are underserved. They want fewer choices, not more features.</p></div>
+    <div class="rec-card">
+      <div class="rec-number">01</div>
+      <h4>The Onboarding Wall</h4>
+      <p>Every app requires users to manually photograph, upload, and tag each item. For someone with 50–200 items, this is hours of work before the app provides any value. It's the #1 reason users abandon these apps after download. No competitor has solved this.</p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-number">02</div>
+      <h4>The Maintenance Burden</h4>
+      <p>Even after initial setup, every new purchase requires manual addition. There's no "set it and forget it" — users must remember to photograph and log each new item, creating ongoing friction that erodes engagement over time.</p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-number">03</div>
+      <h4>The Receipt Data Void</h4>
+      <p>75% of consumers get digital receipts. This data stream contains item names, prices, brands, and often product images — everything needed to populate a wardrobe. Yet only the defunct Finery ever attempted to use it. It's a validated, abandoned opportunity.</p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-number">04</div>
+      <h4>The "What Do I Already Own?" Problem</h4>
+      <p>Intentional purchasing is rising, but no app makes it easy to check your wardrobe before buying. If users could quickly see they already own 12 white t-shirts, they'd make smarter purchase decisions. This is a retention and engagement loop waiting to happen.</p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-number">05</div>
+      <h4>The Intelligence Gap</h4>
+      <p>AI outfit suggestions across competitors are universally described as "hit or miss" at best. No app has cracked truly personalized, context-aware recommendations that factor in weather, calendar, past wear history, and personal style. The AI is generic, not personal.</p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-number">06</div>
+      <h4>Busy Professional Neglect</h4>
+      <p>Most wardrobe apps target fashion-forward users who enjoy curation. Busy professionals who want to reduce decision fatigue — not increase it — are underserved. They want fewer choices, not more features. Speed and automation over discovery and play.</p>
+    </div>
   </div>
 </section>
 
+<!-- ==================== RECOMMENDATIONS ==================== -->
 <section id="recs">
   <div class="section-label">06 — Product Strategy</div>
   <div class="section-title">Recommendations</div>
   <div class="section-subtitle">A new product positioned around automatic wardrobe building, targeting busy professionals who want to dress intentionally with zero maintenance effort.</div>
+
   <div class="two-col">
     <div>
       <h3 style="margin-bottom: 24px;">Core Value Proposition</h3>
       <div class="prose">
         <p><strong>"Your wardrobe builds itself."</strong> The app connects to your email (Gmail, Outlook) and silently reads order confirmation emails from retailers. When it detects a clothing purchase, it automatically extracts the item image, removes the background, tags the category and color, and adds it to your digital closet.</p>
         <p>Users can also upload photos of receipts, paste product links, or manually add items. But the magic is that the primary flow requires <em>zero effort</em> after initial email connection.</p>
-        <p>The MVP focuses on three things: automatic wardrobe population, clean closet browsing, and manual outfit collage creation.</p>
+        <p>The MVP focuses on three things: automatic wardrobe population, clean closet browsing, and manual outfit collage creation. This is enough to be meaningfully better than every competitor on the single dimension that matters most — effort required.</p>
       </div>
     </div>
     <div>
       <h3 style="margin-bottom: 24px;">MVP Feature Set</h3>
       <ul class="challenge-list">
-        <li><div class="challenge-icon">📧</div><div class="challenge-text"><h5>Email receipt scanning</h5><p>Connect Gmail/Outlook. Auto-detect order confirmations from major retailers. Extract item image, name, brand, price, purchase date.</p></div></li>
-        <li><div class="challenge-icon">📸</div><div class="challenge-text"><h5>Receipt upload &amp; manual add</h5><p>OCR for physical receipts. Manual photo capture with background removal. Paste product URL to pull item data.</p></div></li>
-        <li><div class="challenge-icon">✂️</div><div class="challenge-text"><h5>Auto background removal</h5><p>Every item image gets its background removed for clean collage-style outfit building. Stored as transparent PNG.</p></div></li>
-        <li><div class="challenge-icon">🏷️</div><div class="challenge-text"><h5>AI auto-tagging</h5><p>Categorize as shirt, pants, shoes, etc. Detect primary color. Tag brand and season. User can edit any tag.</p></div></li>
-        <li><div class="challenge-icon">👔</div><div class="challenge-text"><h5>Outfit collage builder</h5><p>Drag and drop items onto a canvas to create outfits. Save, name, and tag outfits. Clean, magazine-style export.</p></div></li>
-        <li><div class="challenge-icon">📊</div><div class="challenge-text"><h5>Wardrobe overview</h5><p>Browse by category, color, brand, season. See total items, recent additions. Simple, fast, filterable.</p></div></li>
+        <li>
+          <div class="challenge-icon">📧</div>
+          <div class="challenge-text">
+            <h5>Email receipt scanning</h5>
+            <p>Connect Gmail/Outlook. Auto-detect order confirmations from major retailers. Extract item image, name, brand, price, purchase date.</p>
+          </div>
+        </li>
+        <li>
+          <div class="challenge-icon">📸</div>
+          <div class="challenge-text">
+            <h5>Receipt upload & manual add</h5>
+            <p>OCR for physical receipts. Manual photo capture with background removal. Paste product URL to pull item data.</p>
+          </div>
+        </li>
+        <li>
+          <div class="challenge-icon">✂️</div>
+          <div class="challenge-text">
+            <h5>Auto background removal</h5>
+            <p>Every item image gets its background removed for clean collage-style outfit building. Stored as transparent PNG.</p>
+          </div>
+        </li>
+        <li>
+          <div class="challenge-icon">🏷️</div>
+          <div class="challenge-text">
+            <h5>AI auto-tagging</h5>
+            <p>Categorize as shirt, pants, shoes, etc. Detect primary color. Tag brand and season. User can edit any tag.</p>
+          </div>
+        </li>
+        <li>
+          <div class="challenge-icon">👔</div>
+          <div class="challenge-text">
+            <h5>Outfit collage builder</h5>
+            <p>Drag and drop items onto a canvas to create outfits. Save, name, and tag outfits. Clean, magazine-style export.</p>
+          </div>
+        </li>
+        <li>
+          <div class="challenge-icon">📊</div>
+          <div class="challenge-text">
+            <h5>Wardrobe overview</h5>
+            <p>Browse by category, color, brand, season. See total items, recent additions. Simple, fast, filterable.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- ==================== WIREFRAMES ==================== -->
 <section id="wireframes">
   <div class="section-label">07 — Wireframes</div>
   <div class="section-title">Key Screens</div>
-  <div class="section-subtitle">Low-fidelity wireframes for the core screens, designed for the warm/approachable visual direction with busy professionals in mind.</div>
+  <div class="section-subtitle">Low-fidelity wireframes for the five core screens, designed for the warm/approachable visual direction with busy professionals in mind.</div>
+
   <div class="wireframe-grid">
+
+    <!-- Wireframe 1: Closet Home -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <text x="20" y="54" font-family="Inter" font-size="12" fill="#6B6155">9:41</text>
-        <text x="20" y="100" font-family="DM Serif Display, serif" font-size="28" fill="#1A1A1A">My Closet</text>
-        <text x="20" y="122" font-family="Inter" font-size="13" fill="#9B917F">142 items · 3 added this week</text>
-        <rect x="280" y="80" width="75" height="30" rx="15" fill="#FDF0E8"/>
-        <text x="293" y="100" font-family="Inter" font-size="11" font-weight="600" fill="#C4704B">+3 new</text>
-        <rect x="20" y="145" width="50" height="32" rx="16" fill="#1A1A1A"/>
-        <text x="35" y="165" font-family="Inter" font-size="11" font-weight="500" fill="#FDFAF6">All</text>
-        <rect x="78" y="145" width="60" height="32" rx="16" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <text x="91" y="165" font-family="Inter" font-size="11" font-weight="500" fill="#6B6155">Tops</text>
-        <rect x="146" y="145" width="72" height="32" rx="16" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <text x="157" y="165" font-family="Inter" font-size="11" font-weight="500" fill="#6B6155">Bottoms</text>
-        <rect x="226" y="145" width="62" height="32" rx="16" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <text x="238" y="165" font-family="Inter" font-size="11" font-weight="500" fill="#6B6155">Shoes</text>
-        <rect x="20" y="196" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="32" y="208" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="52" y="220" width="43" height="66" rx="4" fill="#E8DED0"/>
-        <text x="32" y="316" font-family="Inter" font-size="10" fill="#6B6155">Navy Crewneck</text>
-        <rect x="134" y="196" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="146" y="208" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="166" y="218" width="43" height="70" rx="4" fill="#D4C9B8"/>
-        <text x="146" y="316" font-family="Inter" font-size="10" fill="#6B6155">White Oxford</text>
-        <rect x="248" y="196" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="260" y="208" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="280" y="222" width="43" height="64" rx="4" fill="#C4B8A4"/>
-        <text x="260" y="316" font-family="Inter" font-size="10" fill="#6B6155">Khaki Chinos</text>
-        <rect x="20" y="340" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="32" y="352" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="134" y="340" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="146" y="352" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="248" y="340" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="260" y="352" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="20" y="484" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="32" y="496" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="134" y="484" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="146" y="496" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="248" y="484" width="107" height="130" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="260" y="496" width="83" height="90" rx="8" fill="#F5F0E8"/>
-        <rect x="0" y="630" width="375" height="50" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="50" y="660" font-family="Inter" font-size="10" font-weight="600" fill="#C4704B" text-anchor="middle">Closet</text>
-        <text x="137" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Outfits</text>
-        <text x="237" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Activity</text>
-        <text x="325" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Profile</text>
-        <circle cx="50" cy="644" r="2.5" fill="#C4704B"/>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <!-- Status bar -->
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="335" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">⚡</text>
+        <!-- Header -->
+        <text x="20" y="100" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0">My Closet</text>
+        <text x="20" y="122" font-family="DM Sans" font-size="13" fill="#6B5E50">142 items · 3 added this week</text>
+        <!-- Notification badge -->
+        <rect x="280" y="80" width="75" height="30" rx="15" fill="#3D3328"/>
+        <text x="293" y="100" font-family="DM Sans" font-size="11" font-weight="600" fill="#D4956B">+3 new</text>
+        <!-- Filter pills -->
+        <rect x="20" y="145" width="50" height="32" rx="16" fill="#E8DDD0"/>
+        <text x="35" y="165" font-family="DM Sans" font-size="11" font-weight="500" fill="#1C1916">All</text>
+        <rect x="78" y="145" width="60" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="91" y="165" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E">Tops</text>
+        <rect x="146" y="145" width="72" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="157" y="165" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E">Bottoms</text>
+        <rect x="226" y="145" width="62" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="238" y="165" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E">Shoes</text>
+        <rect x="296" y="145" width="60" height="32" rx="16" fill="#332E29" stroke="#3D3630"/>
+        <text x="308" y="165" font-family="DM Sans" font-size="11" font-weight="500" fill="#8B7D6E">Outer</text>
+        <!-- Grid items row 1 -->
+        <rect x="20" y="196" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="208" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="52" y="220" width="43" height="66" rx="4" fill="#4A4238"/>
+        <text x="32" y="316" font-family="DM Sans" font-size="10" fill="#8B7D6E">Navy Crewneck</text>
+        <rect x="134" y="196" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="208" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="166" y="218" width="43" height="70" rx="4" fill="#5A5046"/>
+        <text x="146" y="316" font-family="DM Sans" font-size="10" fill="#8B7D6E">White Oxford</text>
+        <rect x="248" y="196" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="208" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="280" y="222" width="43" height="64" rx="4" fill="#6B5E4E"/>
+        <text x="260" y="316" font-family="DM Sans" font-size="10" fill="#8B7D6E">Khaki Chinos</text>
+        <!-- Grid items row 2 -->
+        <rect x="20" y="340" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="352" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="56" y="360" width="35" height="72" rx="4" fill="#6B6054"/>
+        <text x="32" y="460" font-family="DM Sans" font-size="10" fill="#8B7D6E">Denim Jacket</text>
+        <rect x="134" y="340" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="352" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="162" y="372" width="51" height="50" rx="4" fill="#5E5548"/>
+        <text x="146" y="460" font-family="DM Sans" font-size="10" fill="#8B7D6E">Stan Smiths</text>
+        <rect x="248" y="340" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="352" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="278" y="364" width="47" height="66" rx="4" fill="#645A4C"/>
+        <text x="260" y="460" font-family="DM Sans" font-size="10" fill="#8B7D6E">Grey Hoodie</text>
+        <!-- Grid items row 3 (partial) -->
+        <rect x="20" y="484" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="32" y="496" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="134" y="484" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="146" y="496" width="83" height="90" rx="8" fill="#332E29"/>
+        <rect x="248" y="484" width="107" height="130" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="260" y="496" width="83" height="90" rx="8" fill="#332E29"/>
+        <!-- Bottom tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <!-- Active dot -->
+        <circle cx="50" cy="644" r="2.5" fill="#D4956B"/>
       </svg>
-      <div class="wireframe-label"><h4>Closet Home</h4><p>Grid of items with category filter pills. New auto-added items get a subtle badge. Tap to view details, long-press to add to outfit builder.</p></div>
+      <div class="wireframe-label">
+        <h4>Closet Home</h4>
+        <p>The main view. Grid of items with category filter pills. New auto-added items get a subtle badge. Tap to view details, long-press to add to outfit builder.</p>
+      </div>
     </div>
 
+    <!-- Wireframe 2: Auto-detected item -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <text x="20" y="54" font-family="Inter" font-size="12" fill="#6B6155">9:41</text>
-        <text x="20" y="100" font-family="Inter" font-size="16" fill="#6B6155">←</text>
-        <rect x="20" y="120" width="335" height="48" rx="12" fill="#E8EDE6"/>
-        <text x="40" y="149" font-family="Inter" font-size="13" fill="#7A8F72">✓ Found in your J.Crew order confirmation</text>
-        <rect x="88" y="186" width="200" height="240" rx="16" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="118" y="200" width="140" height="210" rx="8" fill="#F5F0E8"/>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <!-- Back arrow -->
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="140" y="100" font-family="DM Sans" font-size="14" font-weight="600" fill="#E8DDD0" text-anchor="middle">New Item Detected</text>
+        <!-- Success banner -->
+        <rect x="20" y="120" width="335" height="48" rx="12" fill="#2D3329"/>
+        <text x="40" y="149" font-family="DM Sans" font-size="13" fill="#8FA882">✓ Found in your J.Crew order confirmation</text>
+        <!-- Item image -->
+        <rect x="88" y="186" width="200" height="240" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="118" y="200" width="140" height="210" rx="8" fill="#332E29"/>
+        <!-- Placeholder shirt shape -->
         <rect x="143" y="215" width="90" height="120" rx="6" fill="#4A6B8A"/>
-        <rect x="20" y="446" width="335" height="180" rx="16" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="40" y="476" font-family="Inter" font-size="11" font-weight="600" letter-spacing="1" fill="#9B917F">AUTO-DETECTED</text>
-        <text x="40" y="506" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Category</text>
-        <rect x="200" y="492" width="140" height="28" rx="8" fill="#F5F0E8"/>
-        <text x="216" y="510" font-family="Inter" font-size="12" fill="#6B6155">Shirt</text>
-        <text x="40" y="542" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Color</text>
-        <rect x="200" y="528" width="140" height="28" rx="8" fill="#F5F0E8"/>
+        <rect x="133" y="215" width="20" height="50" rx="4" fill="#4A6B8A" transform="rotate(-15 133 215)"/>
+        <rect x="223" y="215" width="20" height="50" rx="4" fill="#4A6B8A" transform="rotate(15 243 215)"/>
+        <!-- Auto-detected info -->
+        <rect x="20" y="446" width="335" height="180" rx="16" fill="#2A2520" stroke="#3D3630"/>
+        <text x="40" y="476" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">AUTO-DETECTED</text>
+        <!-- Field rows -->
+        <text x="40" y="506" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Category</text>
+        <rect x="200" y="492" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="510" font-family="DM Sans" font-size="12" fill="#8B7D6E">Shirt</text>
+        <text x="40" y="542" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Color</text>
+        <rect x="200" y="528" width="140" height="28" rx="8" fill="#332E29"/>
         <circle cx="216" cy="542" r="6" fill="#4A6B8A"/>
-        <text x="230" y="546" font-family="Inter" font-size="12" fill="#6B6155">Navy Blue</text>
-        <text x="40" y="578" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Brand</text>
-        <rect x="200" y="564" width="140" height="28" rx="8" fill="#F5F0E8"/>
-        <text x="216" y="582" font-family="Inter" font-size="12" fill="#6B6155">J.Crew</text>
-        <text x="40" y="614" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Price</text>
-        <rect x="200" y="600" width="140" height="28" rx="8" fill="#F5F0E8"/>
-        <text x="216" y="618" font-family="Inter" font-size="12" fill="#6B6155">$68.00</text>
-        <rect x="20" y="636" width="230" height="48" rx="24" fill="#1A1A1A"/>
-        <text x="135" y="664" font-family="Inter" font-size="14" font-weight="600" fill="#FDFAF6" text-anchor="middle">Add to Closet</text>
-        <text x="290" y="664" font-family="Inter" font-size="13" font-weight="500" fill="#C4704B">Edit tags</text>
+        <text x="230" y="546" font-family="DM Sans" font-size="12" fill="#8B7D6E">Navy Blue</text>
+        <text x="40" y="578" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Brand</text>
+        <rect x="200" y="564" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="582" font-family="DM Sans" font-size="12" fill="#8B7D6E">J.Crew</text>
+        <text x="40" y="614" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Price</text>
+        <rect x="200" y="600" width="140" height="28" rx="8" fill="#332E29"/>
+        <text x="216" y="618" font-family="DM Sans" font-size="12" fill="#8B7D6E">$68.00</text>
+        <!-- Confirm button -->
+        <rect x="20" y="636" width="230" height="48" rx="24" fill="#E8DDD0"/>
+        <text x="135" y="664" font-family="DM Sans" font-size="14" font-weight="600" fill="#1C1916" text-anchor="middle">Add to Closet</text>
+        <!-- Edit link -->
+        <text x="290" y="664" font-family="DM Sans" font-size="13" font-weight="500" fill="#D4956B">Edit tags</text>
       </svg>
-      <div class="wireframe-label"><h4>Item Auto-Detected</h4><p>When a new purchase is detected via email, the user sees a confirmation with the extracted image, auto-tags, and a one-tap confirm. Edit is available but not required.</p></div>
+      <div class="wireframe-label">
+        <h4>Item Auto-Detected</h4>
+        <p>When a new purchase is detected via email, the user sees a confirmation with the extracted image (background removed), auto-tags, and a one-tap confirm. Edit is available but not required.</p>
+      </div>
     </div>
 
+    <!-- Wireframe 3: Outfit Builder -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <text x="20" y="54" font-family="Inter" font-size="12" fill="#6B6155">9:41</text>
-        <text x="20" y="100" font-family="Inter" font-size="16" fill="#6B6155">←</text>
-        <text x="160" y="100" font-family="Inter" font-size="14" font-weight="600" fill="#1A1A1A" text-anchor="middle">Build Outfit</text>
-        <text x="340" y="100" font-family="Inter" font-size="13" font-weight="500" fill="#C4704B">Save</text>
-        <rect x="20" y="120" width="335" height="340" rx="16" fill="#FFFFFF" stroke="#E8E0D4" stroke-dasharray="4 4"/>
-        <text x="187" y="145" font-family="Inter" font-size="11" fill="#9B917F" text-anchor="middle">Drag items onto canvas</text>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="160" y="100" font-family="DM Sans" font-size="14" font-weight="600" fill="#E8DDD0" text-anchor="middle">Build Outfit</text>
+        <text x="340" y="100" font-family="DM Sans" font-size="13" font-weight="500" fill="#D4956B">Save</text>
+        <!-- Canvas area -->
+        <rect x="20" y="120" width="335" height="340" rx="16" fill="#2A2520" stroke="#3D3630" stroke-dasharray="4 4"/>
+        <text x="187" y="145" font-family="DM Sans" font-size="11" fill="#6B5E50" text-anchor="middle">Drag items onto canvas</text>
+        <!-- Placed items on canvas -->
         <rect x="130" y="160" width="100" height="80" rx="4" fill="#4A6B8A" opacity="0.9"/>
         <rect x="125" y="260" width="110" height="120" rx="4" fill="#8B7B6B" opacity="0.9"/>
         <rect x="145" y="395" width="75" height="45" rx="4" fill="#3A3A3A" opacity="0.9"/>
-        <rect x="0" y="475" width="375" height="155" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="20" y="500" font-family="Inter" font-size="11" font-weight="600" letter-spacing="1" fill="#9B917F">YOUR ITEMS</text>
-        <rect x="20" y="510" width="42" height="24" rx="12" fill="#1A1A1A"/>
-        <text x="30" y="526" font-family="Inter" font-size="10" fill="#FDFAF6">Tops</text>
-        <rect x="68" y="510" width="60" height="24" rx="12" fill="#F5F0E8"/>
-        <text x="78" y="526" font-family="Inter" font-size="10" fill="#6B6155">Bottoms</text>
-        <rect x="20" y="544" width="70" height="70" rx="12" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <rect x="34" y="550" width="42" height="58" rx="4" fill="#E8DED0"/>
-        <rect x="98" y="544" width="70" height="70" rx="12" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <rect x="112" y="550" width="42" height="58" rx="4" fill="#D4C9B8"/>
-        <rect x="176" y="544" width="70" height="70" rx="12" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <rect x="190" y="550" width="42" height="58" rx="4" fill="#C9BBA8"/>
-        <rect x="254" y="544" width="70" height="70" rx="12" fill="#F5F0E8" stroke="#E8E0D4"/>
-        <rect x="268" y="550" width="42" height="58" rx="4" fill="#B8A898"/>
-        <rect x="0" y="630" width="375" height="50" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="50" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Closet</text>
-        <text x="137" y="660" font-family="Inter" font-size="10" font-weight="600" fill="#C4704B" text-anchor="middle">Outfits</text>
-        <text x="237" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Activity</text>
-        <text x="325" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Profile</text>
-        <circle cx="137" cy="644" r="2.5" fill="#C4704B"/>
+        <!-- Item tray -->
+        <rect x="0" y="475" width="375" height="155" fill="#2A2520" stroke="#3D3630"/>
+        <text x="20" y="500" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">YOUR ITEMS</text>
+        <!-- Category tabs in tray -->
+        <rect x="20" y="510" width="42" height="24" rx="12" fill="#E8DDD0"/>
+        <text x="30" y="526" font-family="DM Sans" font-size="10" fill="#1C1916">Tops</text>
+        <rect x="68" y="510" width="60" height="24" rx="12" fill="#332E29"/>
+        <text x="78" y="526" font-family="DM Sans" font-size="10" fill="#8B7D6E">Bottoms</text>
+        <rect x="134" y="510" width="52" height="24" rx="12" fill="#332E29"/>
+        <text x="144" y="526" font-family="DM Sans" font-size="10" fill="#8B7D6E">Shoes</text>
+        <!-- Scrollable item row -->
+        <rect x="20" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="34" y="550" width="42" height="58" rx="4" fill="#4A4238"/>
+        <rect x="98" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="112" y="550" width="42" height="58" rx="4" fill="#5A5046"/>
+        <rect x="176" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="190" y="550" width="42" height="58" rx="4" fill="#645A4C"/>
+        <rect x="254" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <rect x="268" y="550" width="42" height="58" rx="4" fill="#6B6054"/>
+        <rect x="332" y="544" width="70" height="70" rx="12" fill="#332E29" stroke="#3D3630"/>
+        <!-- Bottom tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="137" cy="644" r="2.5" fill="#D4956B"/>
       </svg>
-      <div class="wireframe-label"><h4>Outfit Builder</h4><p>Collage-style canvas with a scrollable item tray at the bottom. Drag items onto the canvas, resize and position them. Items are shown with transparent backgrounds.</p></div>
+      <div class="wireframe-label">
+        <h4>Outfit Builder</h4>
+        <p>Collage-style canvas with a scrollable item tray at the bottom. Drag items onto the canvas, resize and position them. Items are shown with transparent backgrounds for clean layering.</p>
+      </div>
     </div>
 
+    <!-- Wireframe 4: Activity Feed -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <text x="20" y="54" font-family="Inter" font-size="12" fill="#6B6155">9:41</text>
-        <text x="20" y="100" font-family="DM Serif Display, serif" font-size="28" fill="#1A1A1A">Activity</text>
-        <text x="20" y="122" font-family="Inter" font-size="13" fill="#9B917F">Your wardrobe is growing automatically</text>
-        <text x="20" y="162" font-family="Inter" font-size="11" font-weight="600" letter-spacing="1" fill="#9B917F">THIS WEEK</text>
-        <rect x="20" y="178" width="335" height="72" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="36" y="190" width="48" height="48" rx="10" fill="#F5F0E8"/>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0">Activity</text>
+        <text x="20" y="122" font-family="DM Sans" font-size="13" fill="#6B5E50">Your wardrobe is growing automatically</text>
+        <!-- This week section -->
+        <text x="20" y="162" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">THIS WEEK</text>
+        <!-- Activity item 1 -->
+        <rect x="20" y="178" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="190" width="48" height="48" rx="10" fill="#332E29"/>
         <rect x="46" y="196" width="28" height="36" rx="4" fill="#4A6B8A"/>
-        <text x="96" y="210" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Slim Fit Oxford Shirt</text>
-        <text x="96" y="228" font-family="Inter" font-size="12" fill="#9B917F">J.Crew · $68 · Auto-added from email</text>
-        <circle cx="338" cy="214" r="4" fill="#7A8F72"/>
-        <rect x="20" y="260" width="335" height="72" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="36" y="272" width="48" height="48" rx="10" fill="#F5F0E8"/>
+        <text x="96" y="210" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Slim Fit Oxford Shirt</text>
+        <text x="96" y="228" font-family="DM Sans" font-size="12" fill="#6B5E50">J.Crew · $68 · Auto-added from email</text>
+        <circle cx="338" cy="214" r="4" fill="#8FA882"/>
+        <!-- Activity item 2 -->
+        <rect x="20" y="260" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="272" width="48" height="48" rx="10" fill="#332E29"/>
         <rect x="48" y="280" width="24" height="32" rx="4" fill="#3A3A3A"/>
-        <text x="96" y="292" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Leather Chelsea Boots</text>
-        <text x="96" y="310" font-family="Inter" font-size="12" fill="#9B917F">Thursday Boots · $199 · Auto-added</text>
-        <circle cx="338" cy="296" r="4" fill="#7A8F72"/>
-        <rect x="20" y="342" width="335" height="72" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="36" y="354" width="48" height="48" rx="10" fill="#F5F0E8"/>
+        <text x="96" y="292" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Leather Chelsea Boots</text>
+        <text x="96" y="310" font-family="DM Sans" font-size="12" fill="#6B5E50">Thursday Boots · $199 · Auto-added</text>
+        <circle cx="338" cy="296" r="4" fill="#8FA882"/>
+        <!-- Activity item 3 -->
+        <rect x="20" y="342" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="354" width="48" height="48" rx="10" fill="#332E29"/>
         <rect x="44" y="360" width="32" height="36" rx="4" fill="#8B7B6B"/>
-        <text x="96" y="374" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Stretch Chinos</text>
-        <text x="96" y="392" font-family="Inter" font-size="12" fill="#9B917F">Bonobos · $98 · Auto-added from email</text>
-        <circle cx="338" cy="378" r="4" fill="#7A8F72"/>
-        <text x="20" y="446" font-family="Inter" font-size="11" font-weight="600" letter-spacing="1" fill="#9B917F">LAST MONTH</text>
-        <rect x="20" y="462" width="335" height="72" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="36" y="474" width="48" height="48" rx="10" fill="#F5F0E8"/>
-        <rect x="46" y="480" width="28" height="36" rx="4" fill="#DAD0C2"/>
-        <text x="96" y="494" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Merino Wool Sweater</text>
-        <text x="96" y="512" font-family="Inter" font-size="12" fill="#9B917F">Everlane · $85 · Manual upload</text>
-        <rect x="20" y="544" width="335" height="72" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="36" y="556" width="48" height="48" rx="10" fill="#F5F0E8"/>
+        <text x="96" y="374" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Stretch Chinos</text>
+        <text x="96" y="392" font-family="DM Sans" font-size="12" fill="#6B5E50">Bonobos · $98 · Auto-added from email</text>
+        <circle cx="338" cy="378" r="4" fill="#8FA882"/>
+        <!-- Earlier section -->
+        <text x="20" y="446" font-family="DM Sans" font-size="11" font-weight="600" letter-spacing="1" fill="#6B5E50">LAST MONTH</text>
+        <rect x="20" y="462" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="474" width="48" height="48" rx="10" fill="#332E29"/>
+        <rect x="46" y="480" width="28" height="36" rx="4" fill="#5E5548"/>
+        <text x="96" y="494" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Merino Wool Sweater</text>
+        <text x="96" y="512" font-family="DM Sans" font-size="12" fill="#6B5E50">Everlane · $85 · Manual upload</text>
+        <rect x="20" y="544" width="335" height="72" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="36" y="556" width="48" height="48" rx="10" fill="#332E29"/>
         <rect x="48" y="562" width="24" height="34" rx="4" fill="#6B8F72"/>
-        <text x="96" y="576" font-family="Inter" font-size="13" font-weight="500" fill="#1A1A1A">Olive Utility Jacket</text>
-        <text x="96" y="594" font-family="Inter" font-size="12" fill="#9B917F">Taylor Stitch · $248 · Auto-added</text>
-        <rect x="0" y="630" width="375" height="50" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="50" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Closet</text>
-        <text x="137" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Outfits</text>
-        <text x="237" y="660" font-family="Inter" font-size="10" font-weight="600" fill="#C4704B" text-anchor="middle">Activity</text>
-        <text x="325" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Profile</text>
-        <circle cx="237" cy="644" r="2.5" fill="#C4704B"/>
+        <text x="96" y="576" font-family="DM Sans" font-size="13" font-weight="500" fill="#E8DDD0">Olive Utility Jacket</text>
+        <text x="96" y="594" font-family="DM Sans" font-size="12" fill="#6B5E50">Taylor Stitch · $248 · Auto-added</text>
+        <!-- Bottom tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="237" cy="644" r="2.5" fill="#D4956B"/>
       </svg>
-      <div class="wireframe-label"><h4>Activity Feed</h4><p>Chronological log of items added — auto-detected and manual. Shows source (email, upload, manual), brand, and price. Green dots indicate auto-added items.</p></div>
+      <div class="wireframe-label">
+        <h4>Activity Feed</h4>
+        <p>A chronological log of items added to the wardrobe — auto-detected and manual. Shows source (email, upload, manual), brand, and price. Green dots indicate auto-added items.</p>
+      </div>
     </div>
 
+    <!-- Wireframe 5: Onboarding / Email Connect -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <rect x="88" y="100" width="200" height="200" rx="100" fill="#FDF0E8"/>
-        <rect x="128" y="150" width="120" height="90" rx="12" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <path d="M128 162 L188 200 L248 162" stroke="#C4704B" stroke-width="2" fill="none"/>
-        <circle cx="118" cy="140" r="4" fill="#C4704B" opacity="0.4"/>
-        <circle cx="268" cy="160" r="3" fill="#7A8F72" opacity="0.5"/>
-        <circle cx="250" cy="130" r="5" fill="#B8956A" opacity="0.3"/>
-        <text x="187" y="350" font-family="DM Serif Display, serif" font-size="28" fill="#1A1A1A" text-anchor="middle">Your closet,</text>
-        <text x="187" y="385" font-family="DM Serif Display, serif" font-size="28" fill="#1A1A1A" text-anchor="middle">on autopilot</text>
-        <text x="187" y="420" font-family="Inter" font-size="14" fill="#9B917F" text-anchor="middle">Connect your email and we'll</text>
-        <text x="187" y="440" font-family="Inter" font-size="14" fill="#9B917F" text-anchor="middle">automatically build your wardrobe</text>
-        <text x="187" y="460" font-family="Inter" font-size="14" fill="#9B917F" text-anchor="middle">from your purchase receipts.</text>
-        <rect x="40" y="500" width="295" height="52" rx="26" fill="#1A1A1A"/>
-        <text x="187" y="531" font-family="Inter" font-size="15" font-weight="600" fill="#FDFAF6" text-anchor="middle">Connect Gmail</text>
-        <rect x="40" y="564" width="295" height="52" rx="26" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="187" y="595" font-family="Inter" font-size="15" font-weight="500" fill="#1A1A1A" text-anchor="middle">Connect Outlook</text>
-        <text x="187" y="644" font-family="Inter" font-size="13" fill="#9B917F" text-anchor="middle">Skip — I'll add items manually</text>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <!-- Illustration area -->
+        <rect x="88" y="100" width="200" height="200" rx="100" fill="#3D3328"/>
+        <rect x="128" y="150" width="120" height="90" rx="12" fill="#2A2520" stroke="#3D3630"/>
+        <!-- Envelope flap -->
+        <path d="M128 162 L188 200 L248 162" stroke="#D4956B" stroke-width="2" fill="none"/>
+        <!-- Sparkles -->
+        <circle cx="118" cy="140" r="4" fill="#D4956B" opacity="0.4"/>
+        <circle cx="268" cy="160" r="3" fill="#8FA882" opacity="0.5"/>
+        <circle cx="250" cy="130" r="5" fill="#C4A87A" opacity="0.3"/>
+        <circle cx="130" cy="280" r="3" fill="#D4956B" opacity="0.3"/>
+        <!-- Title -->
+        <text x="187" y="350" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0" text-anchor="middle">Your closet,</text>
+        <text x="187" y="385" font-family="Cormorant Garamond, serif" font-size="28" fill="#E8DDD0" text-anchor="middle">on autopilot</text>
+        <text x="187" y="420" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">Connect your email and we'll</text>
+        <text x="187" y="440" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">automatically build your wardrobe</text>
+        <text x="187" y="460" font-family="DM Sans" font-size="14" fill="#6B5E50" text-anchor="middle">from your purchase receipts.</text>
+        <!-- CTA buttons -->
+        <rect x="40" y="500" width="295" height="52" rx="26" fill="#E8DDD0"/>
+        <text x="187" y="531" font-family="DM Sans" font-size="15" font-weight="600" fill="#1C1916" text-anchor="middle">Connect Gmail</text>
+        <rect x="40" y="564" width="295" height="52" rx="26" fill="#2A2520" stroke="#3D3630"/>
+        <text x="187" y="595" font-family="DM Sans" font-size="15" font-weight="500" fill="#E8DDD0" text-anchor="middle">Connect Outlook</text>
+        <!-- Skip link -->
+        <text x="187" y="644" font-family="DM Sans" font-size="13" fill="#6B5E50" text-anchor="middle">Skip — I'll add items manually</text>
       </svg>
-      <div class="wireframe-label"><h4>Onboarding: Email Connect</h4><p>The critical onboarding moment. Simple, warm, and focused on a single action: connect your email. The skip option is present but deemphasized.</p></div>
+      <div class="wireframe-label">
+        <h4>Onboarding: Email Connect</h4>
+        <p>The critical onboarding moment. Simple, warm, and focused on a single action: connect your email. The skip option is present but deemphasized. This is the moment of differentiation.</p>
+      </div>
     </div>
 
+    <!-- Wireframe 6: Item Detail -->
     <div class="wireframe-card">
       <svg viewBox="0 0 375 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="375" height="680" fill="#FDFAF6"/>
-        <text x="20" y="54" font-family="Inter" font-size="12" fill="#6B6155">9:41</text>
-        <text x="20" y="100" font-family="Inter" font-size="16" fill="#6B6155">←</text>
-        <text x="340" y="100" font-family="Inter" font-size="16" fill="#6B6155">⋯</text>
-        <rect x="40" y="120" width="295" height="300" rx="20" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <rect x="108" y="140" width="160" height="260" rx="8" fill="#F5F0E8"/>
+        <rect width="375" height="680" fill="#1C1916"/>
+        <text x="20" y="54" font-family="DM Sans" font-size="12" fill="#8B7D6E">9:41</text>
+        <text x="20" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">←</text>
+        <text x="340" y="100" font-family="DM Sans" font-size="16" fill="#8B7D6E">⋯</text>
+        <!-- Item image large -->
+        <rect x="40" y="120" width="295" height="300" rx="20" fill="#2A2520" stroke="#3D3630"/>
+        <rect x="108" y="140" width="160" height="260" rx="8" fill="#332E29"/>
         <rect x="138" y="155" width="100" height="170" rx="6" fill="#4A6B8A"/>
-        <text x="20" y="460" font-family="DM Serif Display, serif" font-size="24" fill="#1A1A1A">Slim Fit Oxford Shirt</text>
-        <text x="20" y="484" font-family="Inter" font-size="14" fill="#9B917F">J.Crew · Added Feb 10, 2026</text>
-        <rect x="20" y="504" width="48" height="28" rx="14" fill="#F5F0E8"/>
-        <text x="32" y="522" font-family="Inter" font-size="11" fill="#6B6155">Shirt</text>
-        <rect x="76" y="504" width="76" height="28" rx="14" fill="#F5F0E8"/>
-        <text x="88" y="522" font-family="Inter" font-size="11" fill="#6B6155">Navy Blue</text>
-        <rect x="160" y="504" width="62" height="28" rx="14" fill="#F5F0E8"/>
-        <text x="172" y="522" font-family="Inter" font-size="11" fill="#6B6155">Spring</text>
-        <rect x="20" y="552" width="335" height="80" rx="14" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="60" y="582" font-family="DM Serif Display, serif" font-size="20" fill="#1A1A1A" text-anchor="middle">$68</text>
-        <text x="60" y="600" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Price</text>
-        <line x1="120" y1="566" x2="120" y2="618" stroke="#E8E0D4"/>
-        <text x="187" y="582" font-family="DM Serif Display, serif" font-size="20" fill="#1A1A1A" text-anchor="middle">4×</text>
-        <text x="187" y="600" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Times Worn</text>
-        <line x1="254" y1="566" x2="254" y2="618" stroke="#E8E0D4"/>
-        <text x="315" y="582" font-family="DM Serif Display, serif" font-size="20" fill="#C4704B" text-anchor="middle">$17</text>
-        <text x="315" y="600" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Cost/Wear</text>
-        <rect x="0" y="630" width="375" height="50" fill="#FFFFFF" stroke="#E8E0D4"/>
-        <text x="50" y="660" font-family="Inter" font-size="10" font-weight="600" fill="#C4704B" text-anchor="middle">Closet</text>
-        <text x="137" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Outfits</text>
-        <text x="237" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Activity</text>
-        <text x="325" y="660" font-family="Inter" font-size="10" fill="#9B917F" text-anchor="middle">Profile</text>
-        <circle cx="50" cy="644" r="2.5" fill="#C4704B"/>
+        <rect x="123" y="155" width="30" height="70" rx="4" fill="#4A6B8A" transform="rotate(-12 123 155)"/>
+        <rect x="228" y="155" width="30" height="70" rx="4" fill="#4A6B8A" transform="rotate(12 258 155)"/>
+        <!-- Item details -->
+        <text x="20" y="460" font-family="Cormorant Garamond, serif" font-size="24" fill="#E8DDD0">Slim Fit Oxford Shirt</text>
+        <text x="20" y="484" font-family="DM Sans" font-size="14" fill="#6B5E50">J.Crew · Added Feb 10, 2026</text>
+        <!-- Tags -->
+        <rect x="20" y="504" width="48" height="28" rx="14" fill="#332E29"/>
+        <text x="32" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E">Shirt</text>
+        <rect x="76" y="504" width="76" height="28" rx="14" fill="#332E29"/>
+        <text x="88" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E">Navy Blue</text>
+        <rect x="160" y="504" width="62" height="28" rx="14" fill="#332E29"/>
+        <text x="172" y="522" font-family="DM Sans" font-size="11" fill="#8B7D6E">Spring</text>
+        <!-- Stats -->
+        <rect x="20" y="552" width="335" height="80" rx="14" fill="#2A2520" stroke="#3D3630"/>
+        <text x="60" y="582" font-family="Cormorant Garamond, serif" font-size="20" fill="#E8DDD0" text-anchor="middle">$68</text>
+        <text x="60" y="600" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Price</text>
+        <line x1="120" y1="566" x2="120" y2="618" stroke="#3D3630"/>
+        <text x="187" y="582" font-family="Cormorant Garamond, serif" font-size="20" fill="#E8DDD0" text-anchor="middle">4×</text>
+        <text x="187" y="600" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Times Worn</text>
+        <line x1="254" y1="566" x2="254" y2="618" stroke="#3D3630"/>
+        <text x="315" y="582" font-family="Cormorant Garamond, serif" font-size="20" fill="#D4956B" text-anchor="middle">$17</text>
+        <text x="315" y="600" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Cost/Wear</text>
+        <!-- Bottom tab bar -->
+        <rect x="0" y="630" width="375" height="50" fill="#2A2520" stroke="#3D3630"/>
+        <text x="50" y="660" font-family="DM Sans" font-size="10" font-weight="600" fill="#D4956B" text-anchor="middle">Closet</text>
+        <text x="137" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Outfits</text>
+        <text x="237" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Activity</text>
+        <text x="325" y="660" font-family="DM Sans" font-size="10" fill="#6B5E50" text-anchor="middle">Profile</text>
+        <circle cx="50" cy="644" r="2.5" fill="#D4956B"/>
       </svg>
-      <div class="wireframe-label"><h4>Item Detail</h4><p>Full item view with large transparent-background image, auto-tags (editable), and wear stats including cost-per-wear.</p></div>
+      <div class="wireframe-label">
+        <h4>Item Detail</h4>
+        <p>Full item view with large transparent-background image, auto-tags (editable), and wear stats including cost-per-wear. The three-stat bar gives immediate utility value.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ==================== USER JOURNEYS ==================== -->
 <section id="journeys">
   <div class="section-label">08 — User Journeys</div>
   <div class="section-title">Key User Flows</div>
   <div class="section-subtitle">Four critical user journeys that define the product experience for a busy professional.</div>
+
   <div class="two-col" style="gap: 64px;">
     <div>
       <h3 style="margin-bottom: 24px;">Journey 1: First-Time Setup</h3>
       <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Sarah, a product manager, downloads the app after seeing it recommended on LinkedIn. She has 10 minutes before a meeting.</p>
       <div class="journey">
-        <div class="journey-step"><h4>Download &amp; Open</h4><p>Sees warm onboarding screen with "Your closet, on autopilot" messaging. Immediately understands the value prop.</p><div class="touchpoints"><span class="touchpoint">App Store</span><span class="touchpoint">Onboarding screen</span></div></div>
-        <div class="journey-step"><h4>Connect Gmail</h4><p>Taps "Connect Gmail." Standard OAuth flow. Grants read-only access. The app begins scanning in the background immediately.</p><div class="touchpoints"><span class="touchpoint">Gmail OAuth</span><span class="touchpoint">Permission screen</span></div></div>
-        <div class="journey-step"><h4>Initial Scan Starts</h4><p>Sees a progress indicator: "Scanning your purchases… Found 23 items so far." Can close the app — scanning continues.</p><div class="touchpoints"><span class="touchpoint">Progress screen</span><span class="touchpoint">Push notification</span></div></div>
-        <div class="journey-step"><h4>Closet Populated</h4><p>Returns 20 minutes later to find 47 items in her closet, organized by category, with backgrounds removed and tags applied. She makes two small edits. Done.</p><div class="touchpoints"><span class="touchpoint">Closet home</span><span class="touchpoint">Item review</span></div></div>
+        <div class="journey-step">
+          <h4>Download & Open</h4>
+          <p>Sees warm onboarding screen with "Your closet, on autopilot" messaging. Immediately understands the value prop: no manual work needed.</p>
+          <div class="touchpoints"><span class="touchpoint">App Store</span><span class="touchpoint">Onboarding screen</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Connect Gmail</h4>
+          <p>Taps "Connect Gmail." Standard OAuth flow. Grants read-only access to emails. The app begins scanning in the background immediately.</p>
+          <div class="touchpoints"><span class="touchpoint">Gmail OAuth</span><span class="touchpoint">Permission screen</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Initial Scan Starts</h4>
+          <p>Sees a progress indicator: "Scanning your purchases… Found 23 items so far." Can close the app — scanning continues.</p>
+          <div class="touchpoints"><span class="touchpoint">Progress screen</span><span class="touchpoint">Push notification</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Closet Populated</h4>
+          <p>Returns 20 minutes later to find 47 items in her closet, organized by category, with backgrounds removed and tags applied. She makes two small edits. Done.</p>
+          <div class="touchpoints"><span class="touchpoint">Closet home</span><span class="touchpoint">Item review</span></div>
+        </div>
       </div>
 
       <h3 style="margin-top: 56px; margin-bottom: 24px;">Journey 2: New Purchase Auto-Added</h3>
-      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Sarah buys new boots from Thursday Boot Company online. She doesn't think about the wardrobe app at all.</p>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Sarah buys a new pair of boots from Thursday Boot Company online. She doesn't think about the wardrobe app at all.</p>
       <div class="journey">
-        <div class="journey-step"><h4>Purchase Made</h4><p>Orders Chelsea boots on thursdayboots.com. Receives standard order confirmation email.</p><div class="touchpoints"><span class="touchpoint">Retailer website</span><span class="touchpoint">Confirmation email</span></div></div>
-        <div class="journey-step"><h4>Auto-Detection</h4><p>Within minutes, the app detects the order confirmation, extracts the product image, removes the background, and tags it.</p><div class="touchpoints"><span class="touchpoint">Background processing</span></div></div>
-        <div class="journey-step"><h4>Notification</h4><p>Sarah gets a subtle push notification: "New item added: Leather Chelsea Boots." She can confirm, edit, or dismiss.</p><div class="touchpoints"><span class="touchpoint">Push notification</span><span class="touchpoint">Activity feed</span></div></div>
-        <div class="journey-step"><h4>It's Just There</h4><p>Next time she opens the app, the boots are in her closet alongside everything else. Zero effort from her.</p><div class="touchpoints"><span class="touchpoint">Closet home</span></div></div>
+        <div class="journey-step">
+          <h4>Purchase Made</h4>
+          <p>Orders Chelsea boots on thursdayboots.com. Receives standard order confirmation email with product image and details.</p>
+          <div class="touchpoints"><span class="touchpoint">Retailer website</span><span class="touchpoint">Confirmation email</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Auto-Detection</h4>
+          <p>Within minutes, the app detects the order confirmation, extracts the product image, removes the background, and tags it: "Boots · Brown · Thursday Boots · $199."</p>
+          <div class="touchpoints"><span class="touchpoint">Background processing</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Notification</h4>
+          <p>Sarah gets a subtle push notification: "New item added: Leather Chelsea Boots." She can confirm, edit, or dismiss.</p>
+          <div class="touchpoints"><span class="touchpoint">Push notification</span><span class="touchpoint">Activity feed</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>It's Just There</h4>
+          <p>Next time she opens the app, the boots are in her closet alongside everything else. Zero effort from her.</p>
+          <div class="touchpoints"><span class="touchpoint">Closet home</span></div>
+        </div>
       </div>
     </div>
 
@@ -923,52 +1505,149 @@
       <h3 style="margin-bottom: 24px;">Journey 3: Building an Outfit</h3>
       <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Sarah has a client dinner tomorrow and wants to plan what to wear. She opens the app during her commute.</p>
       <div class="journey">
-        <div class="journey-step"><h4>Opens Outfit Builder</h4><p>Taps the Outfits tab, then "New Outfit." Sees a blank canvas with her item tray below, filtered by category.</p><div class="touchpoints"><span class="touchpoint">Outfits tab</span><span class="touchpoint">Builder canvas</span></div></div>
-        <div class="journey-step"><h4>Drags Items</h4><p>Scrolls through Tops, drags her navy blazer onto the canvas. Switches to Bottoms, adds grey wool trousers. Adds the new Chelsea boots from Shoes.</p><div class="touchpoints"><span class="touchpoint">Item tray</span><span class="touchpoint">Drag interaction</span></div></div>
-        <div class="journey-step"><h4>Arranges &amp; Saves</h4><p>Resizes and positions items into a magazine-style collage. Names it "Client Dinner — Feb." Saves and optionally adds to calendar for tomorrow.</p><div class="touchpoints"><span class="touchpoint">Canvas tools</span><span class="touchpoint">Save flow</span></div></div>
-        <div class="journey-step"><h4>Morning Reference</h4><p>Next morning, opens the app, sees today's planned outfit, gets dressed in 3 minutes instead of 15. No decision fatigue.</p><div class="touchpoints"><span class="touchpoint">Calendar view</span><span class="touchpoint">Outfit detail</span></div></div>
+        <div class="journey-step">
+          <h4>Opens Outfit Builder</h4>
+          <p>Taps the Outfits tab, then "New Outfit." Sees a blank canvas with her item tray below, filtered by category.</p>
+          <div class="touchpoints"><span class="touchpoint">Outfits tab</span><span class="touchpoint">Builder canvas</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Drags Items</h4>
+          <p>Scrolls through Tops, drags her navy blazer onto the canvas. Switches to Bottoms, adds grey wool trousers. Adds the new Chelsea boots from Shoes. All items are clean cutouts.</p>
+          <div class="touchpoints"><span class="touchpoint">Item tray</span><span class="touchpoint">Drag interaction</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Arranges & Saves</h4>
+          <p>Resizes and positions items into a magazine-style collage. Names it "Client Dinner — Feb." Saves and optionally adds to calendar for tomorrow.</p>
+          <div class="touchpoints"><span class="touchpoint">Canvas tools</span><span class="touchpoint">Save flow</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Morning Reference</h4>
+          <p>Next morning, opens the app, sees today's planned outfit, gets dressed in 3 minutes instead of 15. No decision fatigue.</p>
+          <div class="touchpoints"><span class="touchpoint">Calendar view</span><span class="touchpoint">Outfit detail</span></div>
+        </div>
       </div>
 
       <h3 style="margin-top: 56px; margin-bottom: 24px;">Journey 4: "Do I Already Own This?"</h3>
       <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Sarah is shopping online and sees a nice-looking navy sweater. She pauses — "don't I already have something like this?"</p>
       <div class="journey">
-        <div class="journey-step"><h4>Opens Closet, Filters</h4><p>Opens the app, taps "Tops" filter, then taps the color filter for navy/blue. Sees she already owns 4 navy tops.</p><div class="touchpoints"><span class="touchpoint">Closet home</span><span class="touchpoint">Filters</span></div></div>
-        <div class="journey-step"><h4>Makes an Informed Decision</h4><p>Decides not to buy. Or realizes the sweater she owns is getting worn out and replaces it intentionally. Either way, the decision is informed by data.</p><div class="touchpoints"><span class="touchpoint">Item detail</span><span class="touchpoint">Wear stats</span></div></div>
-        <div class="journey-step"><h4>Reinforces the Habit</h4><p>This 30-second check becomes habitual. Sarah saves money, buys more intentionally, and feels more in control. This is the retention loop.</p><div class="touchpoints"><span class="touchpoint">Habitual use</span></div></div>
+        <div class="journey-step">
+          <h4>Opens Closet, Filters</h4>
+          <p>Opens the app, taps "Tops" filter, then taps the color filter for navy/blue. Sees she already owns 4 navy tops — including a very similar sweater.</p>
+          <div class="touchpoints"><span class="touchpoint">Closet home</span><span class="touchpoint">Filters</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Makes an Informed Decision</h4>
+          <p>Decides not to buy. Or realizes the sweater she owns is getting worn out and replaces it intentionally. Either way, the decision is informed by data, not impulse.</p>
+          <div class="touchpoints"><span class="touchpoint">Item detail</span><span class="touchpoint">Wear stats</span></div>
+        </div>
+        <div class="journey-step">
+          <h4>Reinforces the Habit</h4>
+          <p>This 30-second check becomes habitual. Sarah saves money, buys more intentionally, and feels more in control of her wardrobe. This is the retention loop.</p>
+          <div class="touchpoints"><span class="touchpoint">Habitual use</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ==================== FUTURE FEATURES ==================== -->
 <section id="future">
   <div class="section-label">09 — Future Features Roadmap</div>
   <div class="section-title">Beyond the MVP</div>
-  <div class="section-subtitle">Ideas for post-launch features that move the product from closet management into intelligent wardrobe assistance.</div>
-  <div class="future-card"><span class="phase">Phase 2 — 3–6 months</span><h4>AI Outfit Suggestions</h4><p>Using the wardrobe data, wear history, and weather forecast, suggest 2–3 outfits each morning. The key differentiator: these suggestions are based on <strong>your actual clothes</strong>, not a generic algorithm. Start simple — "you haven't worn X in a while" — and layer in style intelligence over time.</p></div>
-  <div class="future-card"><span class="phase">Phase 2 — 3–6 months</span><h4>Smart "Gap" Detection</h4><p>Analyze the wardrobe for category gaps — "you have 12 tops but only 2 pairs of shoes" — or versatility gaps — "80% of your outfits use the same 3 items." This naturally leads to purchase suggestions positioned as intentional rather than upselling.</p></div>
-  <div class="future-card"><span class="phase">Phase 3 — 6–12 months</span><h4>Calendar + Weather Integration</h4><p>Pull calendar events (meeting types, social events, travel) and local weather to suggest appropriate outfits. A client meeting on a cold day gets different suggestions than a Friday team lunch. This is the "decision fatigue killer" feature.</p></div>
-  <div class="future-card"><span class="phase">Phase 3 — 6–12 months</span><h4>Item-to-Item Suggestions</h4><p>When viewing a single item, suggest other items from the user's closet that pair well with it. Use a combination of color theory, style rules, and collaborative filtering from how users combine items in their saved outfits.</p></div>
-  <div class="future-card"><span class="phase">Phase 4 — 12+ months</span><h4>New Item Recommendations</h4><p>Once gap detection and outfit intelligence are mature, suggest <strong>new items to purchase</strong> that would add the most versatility. "A mid-weight grey jacket would unlock 15 new outfit combinations." Strong monetization path through affiliate partnerships, but requires trust and transparency.</p></div>
-  <div class="future-card"><span class="phase">Phase 4 — 12+ months</span><h4>Resale &amp; Lifecycle Management</h4><p>For items rarely worn, suggest resale through integrated platforms (Poshmark, ThredUp, Depop). Track cost-per-wear to surface "underperforming" items. Aligns with the circular fashion movement and the $350B secondhand market.</p></div>
+  <div class="section-subtitle">Ideas for post-launch features that move the product from closet management into intelligent wardrobe assistance. Ordered by estimated impact and technical feasibility.</div>
+
+  <div class="future-card">
+    <span class="phase">Phase 2 — 3–6 months post-launch</span>
+    <h4>AI Outfit Suggestions</h4>
+    <p>Using the wardrobe data, wear history, and weather forecast, suggest 2–3 outfits each morning. The key differentiator from competitors: these suggestions are based on <strong>your actual clothes</strong>, not a generic algorithm. Start simple — "you haven't worn X in a while" — and layer in style intelligence over time. Recommend starting with a collaborative filtering model trained on saved user outfits, then gradually moving to a more sophisticated vision model that understands color harmony and style compatibility.</p>
+  </div>
+
+  <div class="future-card">
+    <span class="phase">Phase 2 — 3–6 months post-launch</span>
+    <h4>Smart "Gap" Detection</h4>
+    <p>Analyze the wardrobe for category gaps — "you have 12 tops but only 2 pairs of shoes" — or versatility gaps — "80% of your outfits use the same 3 items." This naturally leads to purchase suggestions, but positioned as intentional rather than upselling. Could integrate with affiliate links for a revenue model.</p>
+  </div>
+
+  <div class="future-card">
+    <span class="phase">Phase 3 — 6–12 months post-launch</span>
+    <h4>Calendar + Weather Integration</h4>
+    <p>Pull calendar events (meeting types, social events, travel) and local weather to suggest appropriate outfits. A client meeting on a cold day gets different suggestions than a Friday team lunch. This is the "decision fatigue killer" feature for busy professionals — and no competitor has nailed it with real wardrobe data.</p>
+  </div>
+
+  <div class="future-card">
+    <span class="phase">Phase 3 — 6–12 months post-launch</span>
+    <h4>Item-to-Item Suggestions ("Complete the Look")</h4>
+    <p>When viewing a single item, suggest other items from the user's closet that pair well with it. Use a combination of color theory rules, style rules (casual/formal matching), and collaborative filtering from how users combine items in their saved outfits. This is the "Pinterest for your own clothes" moment.</p>
+  </div>
+
+  <div class="future-card">
+    <span class="phase">Phase 4 — 12+ months post-launch</span>
+    <h4>New Item Recommendations</h4>
+    <p>Once gap detection and outfit intelligence are mature, suggest <strong>new items to purchase</strong> that would add the most versatility to the existing wardrobe. "A mid-weight grey jacket would unlock 15 new outfit combinations." This is a strong monetization path through affiliate partnerships, but requires trust — users must believe the suggestions are genuinely useful, not paid placement. Transparency is critical.</p>
+  </div>
+
+  <div class="future-card">
+    <span class="phase">Phase 4 — 12+ months post-launch</span>
+    <h4>Resale & Lifecycle Management</h4>
+    <p>For items rarely worn, suggest resale through integrated platforms (Poshmark, ThredUp, Depop). Track cost-per-wear to surface "underperforming" items. Help users rotate items out intentionally rather than letting them sit. Aligns with the circular fashion movement and the $350B secondhand market. Could earn referral fees from resale platforms.</p>
+  </div>
 </section>
 
+<!-- ==================== CHALLENGES ==================== -->
 <section id="challenges">
   <div class="section-label">10 — Honest Assessment</div>
   <div class="section-title">Challenges This Product Would Face</div>
   <div class="section-subtitle">No sugarcoating. These are the real obstacles, roughly ordered by severity.</div>
+
   <ul class="challenge-list">
-    <li><div class="challenge-icon">🔒</div><div class="challenge-text"><h5>Email Privacy Concerns</h5><p>Asking users to grant email access is the single biggest friction point. Even with read-only OAuth, people are rightfully cautious. The messaging must emphasize read-only access, only scanning for order confirmations, and easy disconnection. Consider a "privacy-first" mode with forwarded receipts only.</p></div></li>
-    <li><div class="challenge-icon">🧩</div><div class="challenge-text"><h5>Email Parsing Reliability</h5><p>Order confirmation emails vary wildly across retailers. Building a parser that reliably extracts item images and metadata from hundreds of different email formats is a significant technical challenge. An LLM-based parsing approach would help, but it's not cheap at scale.</p></div></li>
-    <li><div class="challenge-icon">🖼️</div><div class="challenge-text"><h5>Image Quality &amp; Background Removal</h5><p>Email receipt images are often low-resolution, oddly cropped, or lifestyle shots. Clean background removal from these varied sources is hard. You'll need high-quality background removal AI and graceful handling when it fails.</p></div></li>
-    <li><div class="challenge-icon">📊</div><div class="challenge-text"><h5>Monetization Without Eroding Trust</h5><p>The product sits on sensitive data (wardrobe + purchase history). Monetizing through affiliate recommendations could feel invasive if not handled carefully. The best path is probably freemium with optional, clearly-labeled affiliate suggestions. Never sell user data.</p></div></li>
-    <li><div class="challenge-icon">🏃</div><div class="challenge-text"><h5>Competitor Response</h5><p>Indyx already supports receipt forwarding and has the best design in the space. If this product gains traction, competitors could add email integration within months. The moat needs to be the quality of the automatic pipeline plus the depth of intelligence built on that data.</p></div></li>
-    <li><div class="challenge-icon">📱</div><div class="challenge-text"><h5>Retroactive Wardrobe Population</h5><p>Email scanning captures future and recent purchases, but users' current wardrobes include items bought years ago, received as gifts, or purchased in physical stores. The app still needs a manual addition path, which reintroduces some friction.</p></div></li>
+    <li>
+      <div class="challenge-icon">🔒</div>
+      <div class="challenge-text">
+        <h5>Email Privacy Concerns</h5>
+        <p>Asking users to grant email access is the single biggest friction point. Even with read-only OAuth, people are rightfully cautious about giving apps access to their inbox. Finery proved the model works — but also that the privacy conversation requires careful handling. The messaging must emphasize: read-only access, only scanning for order confirmations (not reading personal emails), local processing where possible, and easy disconnection. Consider offering a "privacy-first" mode that only scans forwarded receipts rather than full inbox access.</p>
+      </div>
+    </li>
+    <li>
+      <div class="challenge-icon">🧩</div>
+      <div class="challenge-text">
+        <h5>Email Parsing Reliability</h5>
+        <p>Order confirmation emails vary wildly across retailers — different formats, templates, image hosting, and data structures. Building a parser that reliably extracts item images and metadata from hundreds of different email formats is a significant technical challenge. Expect a long tail of edge cases. An LLM-based parsing approach would help, but it's not cheap at scale. You'll need a fallback workflow for when parsing fails — probably a "we detected a purchase but couldn't extract details, want to add this manually?" flow.</p>
+      </div>
+    </li>
+    <li>
+      <div class="challenge-icon">🖼️</div>
+      <div class="challenge-text">
+        <h5>Image Quality & Background Removal</h5>
+        <p>Email receipt images are often low-resolution, oddly cropped, or lifestyle shots (model wearing the item in a scene). Clean background removal from these varied sources is hard. Even Whering — which made background removal a core feature — struggles with it. You'll need high-quality background removal AI (Photoroom, ClipDrop) and graceful handling when it fails. Let users manually crop or replace images as a fallback.</p>
+      </div>
+    </li>
+    <li>
+      <div class="challenge-icon">📊</div>
+      <div class="challenge-text">
+        <h5>Monetization Without Eroding Trust</h5>
+        <p>The product sits on sensitive data (wardrobe + purchase history). Monetizing through affiliate recommendations for new items could feel invasive if not handled carefully. The line between "helpful suggestion" and "ad disguised as a suggestion" is thin. The best path is probably freemium (free auto-import, paid outfit intelligence) with optional, clearly-labeled affiliate suggestions. Never sell user data. Transparency is the product's core trust currency.</p>
+      </div>
+    </li>
+    <li>
+      <div class="challenge-icon">🏃</div>
+      <div class="challenge-text">
+        <h5>Competitor Response</h5>
+        <p>Indyx already supports receipt forwarding and has the best design in the space. If this product gains traction, Indyx or Fits could add email integration within months. The moat needs to be the quality and reliability of the automatic pipeline, plus the depth of intelligence built on top of that data. Moving fast matters — but so does getting the core parsing engine right.</p>
+      </div>
+    </li>
+    <li>
+      <div class="challenge-icon">📱</div>
+      <div class="challenge-text">
+        <h5>Retroactive Wardrobe Population</h5>
+        <p>Email scanning captures future and recent purchases, but users' current wardrobes include items bought years ago, received as gifts, or purchased in physical stores. The app still needs a manual addition path for these items, which reintroduces some of the friction problem. Mitigate by making manual add as frictionless as possible (photo → auto-tag in 2 taps) and by positioning the auto feature as the ongoing maintenance solution, not the one-time migration solution.</p>
+      </div>
+    </li>
   </ul>
 </section>
 
 <footer>
   <p>Product Strategy Report · February 2026 · Prepared for internal review</p>
-  <p style="margin-top: 8px; font-size: 12px;">Research sources include McKinsey State of Fashion 2026, BoF Consumer Behavior Reports, App Store &amp; Google Play reviews, individual app websites, UX case studies, and market research from Intel Market Research, SNS Insider, and Greenbook.</p>
+  <p style="margin-top: 8px; font-size: 12px;">Research sources include McKinsey State of Fashion 2026, BoF Consumer Behavior Reports, App Store & Google Play reviews, individual app websites, UX case studies, and market research from Intel Market Research, SNS Insider, and Greenbook.</p>
 </footer>
 
 </body>
